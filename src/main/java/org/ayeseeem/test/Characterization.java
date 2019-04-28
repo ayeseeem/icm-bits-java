@@ -13,8 +13,8 @@ import java.lang.annotation.Target;
  * <em>specifying</em> the behaviour. For example,
  *
  * <code><pre>
- * &#64;Test
  * &#64;Characterization
+ * &#64;Test
  * public void testDefaultResponseIsNull() {
  *     //...
  * }
@@ -22,6 +22,10 @@ import java.lang.annotation.Target;
  *
  * is a test that <em>describes</em> the current behaviour, but is <em>not</em>
  * a specification or requirement.
+ * <p>
+ * <b>Note</b> the preferred order - {@code @Characterization}, then
+ * {@code @Test}. This ordering is not required, but it reads better: it is a
+ * "characterization test", it doesn't "test (the) characterization".
  * <p>
  * The main reason we need this annotation is that we do not name our normal
  * tests with "should": it is usually implied. So the example above -
