@@ -30,7 +30,7 @@ import java.lang.annotation.Target;
  * The main reason we need this annotation is that we do not name our normal
  * tests with "should": it is usually implied. So the example above -
  * {@code testDefaultResponseIsNull} would normally be ready as "default
- * response should be null". By marking it with this annotation ,we are
+ * response should be null". By marking it with this annotation, we are
  * indicating that the default response <em>is</em> null, but without saying
  * that it <em>should</em> be.
  */
