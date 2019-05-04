@@ -12,13 +12,13 @@ import java.lang.annotation.Target;
  * or describe, or document) the behaviour of the code, but without necessarily
  * <em>specifying</em> the behaviour. For example,
  *
- * <code><pre>
+ * <pre>
  * &#64;Characterization
  * &#64;Test
  * public void testDefaultResponseIsNull() {
  *     //...
  * }
- * </pre></code>
+ * </pre>
  *
  * is a test that <em>describes</em> the current behaviour, but is <em>not</em>
  * a specification or requirement.
