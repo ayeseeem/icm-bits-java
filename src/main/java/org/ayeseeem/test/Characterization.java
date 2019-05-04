@@ -16,7 +16,7 @@ import java.lang.annotation.Target;
  * &#64;Characterization
  * &#64;Test
  * public void testDefaultResponseIsNull() {
- *     //...
+ *     // ...
  * }
  * </pre>
  *
@@ -29,10 +29,10 @@ import java.lang.annotation.Target;
  * <p>
  * The main reason we need this annotation is that we do not name our normal
  * tests with "should": it is usually implied. So the example above -
- * {@code testDefaultResponseIsNull} would normally be read as "default
- * response should be null". By marking it with this annotation, we are
- * indicating that the default response <em>is</em> null, but without saying
- * that it <em>should</em> be.
+ * {@code testDefaultResponseIsNull} would normally be read as "default response
+ * should be null". By marking it with this annotation, we are indicating that
+ * the default response <em>is</em> null, but without saying that it
+ * <em>should</em> be.
  * <p>
  * {@code @Characterization} is a {@code @Documented} annotation. This has no
  * particular effect at the moment, but one can imagine a custom test-runner
