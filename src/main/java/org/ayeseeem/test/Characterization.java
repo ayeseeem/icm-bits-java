@@ -33,6 +33,12 @@ import java.lang.annotation.Target;
  * response should be null". By marking it with this annotation, we are
  * indicating that the default response <em>is</em> null, but without saying
  * that it <em>should</em> be.
+ * <p>
+ * {@code @Characterization} is a {@code @Documented} annotation. This has no
+ * particular effect at the moment, but one can imagine a custom test-runner
+ * could use this annotation to report failed {@code @Characterization @Test}s
+ * differently to unannotated tests - for example, explaining that captured
+ * behaviour has changed.
  */
 @Documented
 @Target({ TYPE, METHOD })
