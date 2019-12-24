@@ -14,7 +14,7 @@ and directly what is being asked?:
 
 ```java
 if (the(month).isOneOf(SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER) {
-    // it's name derives from its Latin ordinal in the Roman calendar
+    // its name derives from its Latin ordinal in the Roman calendar
 }
 
 if (Arrays.asList(SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER).contains(month)) {
