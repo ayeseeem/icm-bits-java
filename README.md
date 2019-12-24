@@ -5,8 +5,8 @@
 
 Java utilities from [ayeseeem.org](https://www.ayeseeem.org/).
 
-`@ContainedItem` for better `if`s
----------------------------------
+`ContainedItem` for better `if`s
+--------------------------------
 
 Allows clearer, more expressive `if` statements testing whether an item is in a
 group of items. Which of these do you prefer? Which expresses more clearly
