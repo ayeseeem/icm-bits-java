@@ -3,7 +3,7 @@
 
 [![Build Status](https://travis-ci.org/ayeseeem/icm-bits-java.svg?branch=master)](https://travis-ci.org/ayeseeem/icm-bits-java)
 
-Java test utilities from [ayeseeem.org](https://www.ayeseeem.org/).
+Java utilities from [ayeseeem.org](https://www.ayeseeem.org/).
 
 `@ContainedItem` for better `if`s
 ---------------------------------
