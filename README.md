@@ -3,7 +3,55 @@
 
 [![Build Status](https://travis-ci.org/ayeseeem/icm-bits-java.svg?branch=master)](https://travis-ci.org/ayeseeem/icm-bits-java)
 
-Java utilities from [ayeseeem.org](https://www.ayeseeem.org/).
+Expressive Java utilities from [ayeseeem.org](https://www.ayeseeem.org/).
+Designed to make code clearer.
+
+
+Expressive `Collection` factory methods
+------------------------------------------
+
+Nicer ways to create simple `List`s and `Set`s. Use static imports and you
+can write like this:
+
+```java
+List<Month> latinNumberedPeriod = listOf(SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER);
+
+Set<Month> latinNumberedMonths = setOf(SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER);
+```
+
+(See
+[`ListSupport.java`](https://github.com/ayeseeem/icm-bits-java/blob/master/src/main/java/org/ayeseeem/say/java/util/ListSupport.java),
+[`SetSupport.java`](https://github.com/ayeseeem/icm-bits-java/blob/master/src/main/java/org/ayeseeem/say/java/util/SetSupport.java),
+[`ListSupportExamplesTest.java`](https://github.com/ayeseeem/icm-bits-java/blob/master/src/test/java/org/ayeseeem/say/example/ListSupportExamplesTest.java), and
+[`SetSupportExamplesTest.java`](https://github.com/ayeseeem/icm-bits-java/blob/master/src/test/java/org/ayeseeem/say/example/SetSupportExamplesTest.java)
+for more details.
+)
+
+Use `listOf` instead of `Arrays.asList`. There was no equivalent for
+`setOf`.
+
+Now with Java 9 you can now use `List.of` and `Set.of`, so perhaps these
+are no longer needed. But note that the details of mutability and modifiability
+are different.
+
+Clearer ways of expressing why you have chosen a particular `Map`
+implementation. Which expresses more clearly and directly what is being done?:
+
+```java
+supportedCodes = keySortedMap();
+latestCodes = insertionOrderedMap();
+```
+
+```java
+supportedCodes = new TreeMap<>(); // key-sorted
+latestCodes = new LinkedHashMap<>(); // insertion-ordered
+```
+(See
+[`MapSupport.java`](https://github.com/ayeseeem/icm-bits-java/blob/master/src/main/java/org/ayeseeem/say/java/util/MapSupport.java) and
+[`MapSupportExamplesTest.java`](https://github.com/ayeseeem/icm-bits-java/blob/master/src/test/java/org/ayeseeem/say/example/MapSupportExamplesTest.java)
+for more details.
+)
+
 
 `ContainedItem` for better `if`s
 --------------------------------
