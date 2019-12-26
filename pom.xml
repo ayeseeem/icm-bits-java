@@ -25,12 +25,13 @@
 
   <distributionManagement>
     <repository>
-      <id>project.repository</id>
-      <url>${projectRepository.url}</url>
+      <id>github</id>
+      <name>GitHub ayeseeem Apache Maven Packages for icm-bits-java</name>
+      <url>https://maven.pkg.github.com/ayeseeem/icm-bits-java</url>
     </repository>
     <snapshotRepository>
       <id>project.repository</id>
-      <url>${projectRepository.url}</url>
+      <url>file://.\local-dev-deployment-repo</url>
     </snapshotRepository>
   </distributionManagement>
 
@@ -41,7 +42,6 @@
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <osgi.bundle.vendor>ayeseeem.org</osgi.bundle.vendor>
     <hamcrest.version>1.3</hamcrest.version>
-    <projectRepository.url>file://.\local-dev-deployment-repo</projectRepository.url>
   </properties>
 
   <dependencies>
