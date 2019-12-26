@@ -18,6 +18,11 @@
     <url>https://ayeseeem.org/</url>
   </organization>
 
+  <scm>
+    <connection>scm:git:https://github.com/ayeseeem/icm-bits-java.git</connection>
+    <developerConnection>scm:git:https://github.com/ayeseeem/icm-bits-java.git</developerConnection>
+  </scm>
+
   <distributionManagement>
     <repository>
       <id>project.repository</id>
