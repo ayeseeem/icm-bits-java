@@ -32,6 +32,14 @@ public class ListSupportTest {
         assertThat(listOf("b", "z", "a", "y"), contains("b", "z", "a", "y"));
     }
 
+    @Characterization
+    @Test
+    public void testListOf_TakesAnArrayAsAnArgument() {
+        String[] anArray = { "a", "b", "c" };
+
+        assertThat(listOf(anArray), contains("a", "b", "c"));
+    }
+
     @Test
     public void testListOf_ArbitraryType() {
         assertThat(listOf(dummy(1), dummy(2), dummy(3)),
