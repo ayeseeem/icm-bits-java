@@ -138,6 +138,7 @@
                 <include>src/**/*.xml</include>
               </includes>
               <trimTrailingWhitespace/>
+              <endWithNewline/>
             </format>
           </formats>
         </configuration>
