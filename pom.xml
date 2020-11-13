@@ -152,6 +152,16 @@
             </format>
           </formats>
         </configuration>
+        <executions>
+          <execution>
+            <!-- Run in compile phase: fail fast -->
+            <id>spotless-check</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>check</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
