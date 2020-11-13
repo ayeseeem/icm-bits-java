@@ -145,6 +145,10 @@
               </includes>
               <trimTrailingWhitespace/>
               <endWithNewline/>
+              <indent>
+                <spaces>true</spaces>
+                <spacesPerTab>4</spacesPerTab>
+              </indent>
             </format>
           </formats>
         </configuration>
