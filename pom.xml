@@ -128,6 +128,16 @@
             <format>
               <includes>
                 <include>**/pom.xml</include>
+              </includes>
+              <trimTrailingWhitespace/>
+              <endWithNewline/>
+              <indent>
+                <spaces>true</spaces>
+                <spacesPerTab>2</spacesPerTab>
+              </indent>
+            </format>
+            <format>
+              <includes>
                 <include>**/*.md</include>
 
                 <include>src/**/*.java</include>
