@@ -10,8 +10,9 @@ Designed to make code clearer.
 Expressive `Collection` factory methods
 ------------------------------------------
 
-Nicer ways to create simple `List`s and `Set`s. Use static imports and you
-can write like this:
+### Nicer ways to create simple `List`s and `Set`s ###
+
+Use static imports and you can write like this:
 
 ```java
 List<Month> latinNumberedPeriod = listOf(SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER);
@@ -34,8 +35,10 @@ Now with Java 9 you can now use `List.of` and `Set.of`, so perhaps these
 are no longer needed. But note that the details of mutability and modifiability
 are different.
 
+### Explain your choice of `Map` ###
+
 Clearer ways of expressing why you have chosen a particular `Map`
-implementation. Which expresses more clearly and directly what is being done?:
+*implementation*. Which expresses more clearly and directly what is being done?:
 
 ```java
 supportedCodes = keySortedMap();
