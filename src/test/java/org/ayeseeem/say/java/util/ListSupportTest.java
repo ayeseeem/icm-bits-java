@@ -3,6 +3,7 @@ package org.ayeseeem.say.java.util;
 import static org.ayeseeem.say.java.util.DummyValue.dummy;
 import static org.ayeseeem.say.java.util.ListSupport.listOf;
 import static org.ayeseeem.say.java.util.ListSupport.modifiableListOf;
+import static org.ayeseeem.say.java.util.ListSupport.unmodifiableListOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
@@ -119,6 +120,63 @@ public class ListSupportTest {
     @Test
     public void testModifiableListOf_CreatesListWhereElementsCanBeSubstituted() {
         List<String> list = modifiableListOf("a", "b");
+        list.set(0, "new entry");
+        assertThat(list, contains("new entry", "b"));
+    }
+
+    @Test
+    public void testUnmodifiableListOf() {
+        assertThat(unmodifiableListOf("a", "b", "c"), contains("a", "b", "c"));
+    }
+
+    @Test
+    public void testUnmodifiableListOf_CanBeEmpty() {
+        assertThat(unmodifiableListOf(), is(empty()));
+    }
+
+    @Test
+    public void testUnmodifiableListOf_RetainsOrder() {
+        assertThat(unmodifiableListOf("b", "z", "a", "y"), containsInAnyOrder("b", "z", "a", "y"));
+        assertThat(unmodifiableListOf("b", "z", "a", "y"), contains("b", "z", "a", "y"));
+    }
+
+    @Characterization
+    @Test
+    public void testUnmodifiableListOf_TakesAnArrayAsAnArgument() {
+        String[] anArray = { "a", "b", "c" };
+
+        assertThat(unmodifiableListOf(anArray), contains("a", "b", "c"));
+    }
+
+    @Test
+    public void testUnmodifiableListOf_ArbitraryType() {
+        assertThat(unmodifiableListOf(dummy(1), dummy(2), dummy(3)),
+                contains(dummy(1), dummy(2), dummy(3)));
+    }
+
+    @Test
+    public void testUnmodifiableListOf_AllowsMixedTypes() {
+        assertThat(unmodifiableListOf("a", dummy(1)), contains("a", dummy(1)));
+    }
+
+    @Test(expected = UnsupportedOperationException.class)
+    public void testUnmodifiableListOf_CreatesStructurallyUnmodifiableList_CannotRemoveElement() {
+        List<String> list = unmodifiableListOf("a", "b", "c");
+
+        list.remove("b");
+    }
+
+    @Test(expected = UnsupportedOperationException.class)
+    public void testUnmodifiableListOf_CreatesStructurallyUnmodifiableList_CannotAddElement() {
+        List<String> list = unmodifiableListOf("a", "b", "c");
+
+        list.add("d");
+    }
+
+    @Characterization
+    @Test
+    public void testUnmodifiableListOf_CreatesListWhereElementsCanBeSubstituted() {
+        List<String> list = unmodifiableListOf("a", "b");
         list.set(0, "new entry");
         assertThat(list, contains("new entry", "b"));
     }

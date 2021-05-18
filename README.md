@@ -21,7 +21,10 @@ Set<Month> latinNumberedMonths = setOf(SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER);
 ```
 
 If you want to emphasize the nature of the collection, you can use
-`modifiableListOf` and `modifiableSetOf`.
+`modifiableListOf()` and `modifiableSetOf()`.
+
+There is also an `unmodifiableListOf()`. This is like Java's
+`Collections.unmodifiableList()`, but takes varargs, not a list.
 
 (See
 [`ListSupport.java`](https://github.com/ayeseeem/icm-bits-java/blob/master/src/main/java/org/ayeseeem/say/java/util/ListSupport.java),
