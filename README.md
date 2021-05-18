@@ -20,7 +20,8 @@ List<Month> latinNumberedPeriod = listOf(SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER)
 Set<Month> latinNumberedMonths = setOf(SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER);
 ```
 
-If you want to emphasize the nature of the list, you can use `modifiableListOf`.
+If you want to emphasize the nature of the collection, you can use
+`modifiableListOf` and `modifiableSetOf`.
 
 (See
 [`ListSupport.java`](https://github.com/ayeseeem/icm-bits-java/blob/master/src/main/java/org/ayeseeem/say/java/util/ListSupport.java),
