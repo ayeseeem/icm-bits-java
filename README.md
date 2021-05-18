@@ -110,3 +110,9 @@ or describe, or document) the behaviour of the code, but without necessarily
 
 See
 [`Characterization.java`](https://github.com/ayeseeem/icm-bits-java/blob/master/src/main/java/org/ayeseeem/test/Characterization.java) for more details.
+
+
+Coding Standard
+---------------
+
+Basic standard is [icm-java-style](https://github.com/ayeseeem/icm-java-style/).
