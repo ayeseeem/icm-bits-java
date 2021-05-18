@@ -2,6 +2,7 @@ package org.ayeseeem.say.java.util;
 
 import static org.ayeseeem.say.java.util.DummyValue.dummy;
 import static org.ayeseeem.say.java.util.ListSupport.listOf;
+import static org.ayeseeem.say.java.util.ListSupport.modifiableListOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
@@ -65,6 +66,59 @@ public class ListSupportTest {
     @Test
     public void testListOf_CreatesListWhereElementsCanBeSubstituted() {
         List<String> list = listOf("a", "b");
+        list.set(0, "new entry");
+        assertThat(list, contains("new entry", "b"));
+    }
+
+    @Test
+    public void testModifiableListOf() {
+        assertThat(modifiableListOf("a", "b", "c"), contains("a", "b", "c"));
+    }
+
+    @Test
+    public void testModifiableListOf_CanBeEmpty() {
+        assertThat(modifiableListOf(), is(empty()));
+    }
+
+    @Test
+    public void testModifiableListOf_RetainsOrder() {
+        assertThat(modifiableListOf("b", "z", "a", "y"), containsInAnyOrder("b", "z", "a", "y"));
+        assertThat(modifiableListOf("b", "z", "a", "y"), contains("b", "z", "a", "y"));
+    }
+
+    @Characterization
+    @Test
+    public void testModifiableListOf_TakesAnArrayAsAnArgument() {
+        String[] anArray = { "a", "b", "c" };
+
+        assertThat(modifiableListOf(anArray), contains("a", "b", "c"));
+    }
+
+    @Test
+    public void testModifiableListOf_ArbitraryType() {
+        assertThat(modifiableListOf(dummy(1), dummy(2), dummy(3)),
+                contains(dummy(1), dummy(2), dummy(3)));
+    }
+
+    @Test
+    public void testModifiableListOf_AllowsMixedTypes() {
+        assertThat(modifiableListOf("a", dummy(1)), contains("a", dummy(1)));
+    }
+
+    @Test
+    public void testModifiableListOf_CreatesStructurallyModifiableList() {
+        List<String> list = modifiableListOf("a", "b", "c");
+        list.remove("b");
+        assertThat(list, contains("a", "c"));
+
+        list.add("d");
+        list.add("e");
+        assertThat(list, contains("a", "c", "d", "e"));
+    }
+
+    @Test
+    public void testModifiableListOf_CreatesListWhereElementsCanBeSubstituted() {
+        List<String> list = modifiableListOf("a", "b");
         list.set(0, "new entry");
         assertThat(list, contains("new entry", "b"));
     }
