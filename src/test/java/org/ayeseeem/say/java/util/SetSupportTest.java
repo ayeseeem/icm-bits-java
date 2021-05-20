@@ -117,14 +117,14 @@ public class SetSupportTest {
     }
 
     @Test(expected = UnsupportedOperationException.class)
-    public void testUnmodifiableSetOf_CreatesStructurallyUnmodifiableList_CannotRemoveElement() {
+    public void testUnmodifiableSetOf_CreatesStructurallyUnmodifiableSet_CannotRemoveElement() {
         Set<String> set = unmodifiableSetOf("a", "b", "c");
 
         set.remove("b");
     }
 
     @Test(expected = UnsupportedOperationException.class)
-    public void testUnmodifiableSetOf_CreatesStructurallyUnmodifiableList_CannotAddElement() {
+    public void testUnmodifiableSetOf_CreatesStructurallyUnmodifiableSet_CannotAddElement() {
         Set<String> set = unmodifiableSetOf("a", "b", "c");
 
         set.add("d");
