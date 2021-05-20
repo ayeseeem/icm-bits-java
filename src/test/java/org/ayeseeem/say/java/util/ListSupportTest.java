@@ -53,15 +53,18 @@ public class ListSupportTest {
         assertThat(listOf("a", dummy(1)), contains("a", dummy(1)));
     }
 
-    @Test
-    public void testListOf_CreatesStructurallyModifiableList() {
+    @Test(expected = UnsupportedOperationException.class)
+    public void testListOf_CreatesStructurallyUnmodifiableList_CannotRemoveElement() {
         List<String> list = listOf("a", "b", "c");
+
         list.remove("b");
-        assertThat(list, contains("a", "c"));
+    }
+
+    @Test(expected = UnsupportedOperationException.class)
+    public void testListOf_CreatesStructurallyUnmodifiableList_CannotAddElement() {
+        List<String> list = listOf("a", "b", "c");
 
         list.add("d");
-        list.add("e");
-        assertThat(list, contains("a", "c", "d", "e"));
     }
 
     @Test

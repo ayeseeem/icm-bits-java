@@ -20,12 +20,20 @@ List<Month> latinNumberedPeriod = listOf(SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER)
 Set<Month> latinNumberedMonths = setOf(SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER);
 ```
 
-If you want to emphasize the nature of the collection, you can use
-`modifiableListOf()` and `modifiableSetOf()`.
+Use `listOf` instead of `Arrays.asList`. There was no equivalent for
+`setOf`.
 
-There are also `unmodifiableListOf()` and `unmodifiableSetOf()`.
+If you want to emphasize the nature of the collection, you can use
+`unmodifiableListOf()` and `unmodifiableSetOf()`.
 These are like Java's `Collections.unmodifiableList()`, and
 `Collections.unmodifiableSet()`, but they take varargs, not a collection.
+
+Now with Java 9+ you can now use `List.of` and `Set.of`, so perhaps some of these
+are no longer needed. But note that the details of mutability and modifiability
+might be different.
+
+There are also modifiable equivalents, `modifiableListOf()` and
+`modifiableSetOf()`.
 
 (See
 [`ListSupport.java`](https://github.com/ayeseeem/icm-bits-java/blob/master/src/main/java/org/ayeseeem/say/java/util/ListSupport.java),
@@ -35,12 +43,6 @@ These are like Java's `Collections.unmodifiableList()`, and
 for more details.
 )
 
-Use `listOf` instead of `Arrays.asList`. There was no equivalent for
-`setOf`.
-
-Now with Java 9+ you can now use `List.of` and `Set.of`, so perhaps some of these
-are no longer needed. But note that the details of mutability and modifiability
-are different.
 
 ### Explain your choice of `Map` ###
 

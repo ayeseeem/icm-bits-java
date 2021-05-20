@@ -40,15 +40,18 @@ public class SetSupportTest {
                 containsInAnyOrder(dummy(1), dummy(2), dummy(10)));
     }
 
-    @Test
-    public void testSetOf_CreatesStructurallyModifiableSet() {
+    @Test(expected = UnsupportedOperationException.class)
+    public void testSetOf_CreatesStructurallyUnmodifiableSet_CannotRemoveElement() {
         Set<String> set = setOf("a", "b", "c");
+
         set.remove("b");
-        assertThat(set, containsInAnyOrder("a", "c"));
+    }
+
+    @Test(expected = UnsupportedOperationException.class)
+    public void testSetOf_CreatesStructurallyUnmodifiableSet_CannotAddElement() {
+        Set<String> set = setOf("a", "b", "c");
 
         set.add("d");
-        set.add("e");
-        assertThat(set, containsInAnyOrder("a", "c", "d", "e"));
     }
 
     @Test
