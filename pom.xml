@@ -55,7 +55,7 @@
       <groupId>org.hamcrest</groupId>
       <artifactId>hamcrest-core</artifactId>
       <version>${hamcrest.version}</version>
-      <scope>test</scope>
+      <!-- not just in test scope -->
     </dependency>
 
     <dependency>
