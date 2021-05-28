@@ -126,6 +126,30 @@ public class ExhaustiveCaseCheckerTest {
         fail(ASSERTION_ERROR_EXPECTED);
     }
 
+    @Characterization
+    @Test
+    public void testCheckAll_DoesNotDetectIfNotAllCasesAreCovered() {
+        ExhaustiveCaseChecker<Cases> subject = new ExhaustiveCaseChecker<>(
+                setOf(Cases.values()));
+
+        subject.checkAll(
+                () -> assertThat(ONE.name(), is("ONE")),
+                () -> assertThat(ONE.name(), is("ONE")),
+                () -> assertThat(THREE.name(), is("THREE")));
+    }
+
+    @Characterization
+    @Test
+    public void testCheckAll_DoesNotDetectTestCasesAreInvokedAtAll() {
+        ExhaustiveCaseChecker<Cases> subject = new ExhaustiveCaseChecker<>(
+                setOf(Cases.values()));
+
+        subject.checkAll(
+                () -> assertThat(ONE.name(), is("ONE")),
+                () -> assertThat(TWO.name(), is("TWO")),
+                () -> assertThat("arbitrary unrelated passing case", is("arbitrary unrelated passing case")));
+    }
+
     private static final String ASSERTION_ERROR_EXPECTED = "AssertionError expected";
 
     private static final ExhaustiveCaseCheck NO_OP = () -> {
