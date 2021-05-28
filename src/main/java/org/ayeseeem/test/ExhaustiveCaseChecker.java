@@ -4,6 +4,7 @@ import static org.ayeseeem.say.java.util.ListSupport.listOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+import java.util.EnumSet;
 import java.util.Set;
 
 import org.hamcrest.Matcher;
@@ -35,8 +36,27 @@ public class ExhaustiveCaseChecker<CaseT> {
 
     private final Set<CaseT> cases;
 
+    /**
+     * Gets the cases, for checking in tests.
+     * @return the cases
+     */
+    Set<CaseT> getCases() {
+        return cases;
+    }
+
     public ExhaustiveCaseChecker(Set<CaseT> cases) {
         this.cases = cases;
+    }
+
+    public static <E extends Enum<E>> ExhaustiveCaseChecker<E> forEnum(Class<E> enumType) {
+        EnumSet<E> s = EnumSet.allOf(enumType);
+        return new ExhaustiveCaseChecker<>(s);
+    }
+
+    @SuppressWarnings("unchecked")
+    public <E extends Enum<E>> ExhaustiveCaseChecker(Class<E> enumType) {
+        EnumSet<E> s = EnumSet.allOf(enumType);
+        this.cases = (Set<CaseT>) s;
     }
 
     public void checkAll(ExhaustiveCaseCheck... checks) {

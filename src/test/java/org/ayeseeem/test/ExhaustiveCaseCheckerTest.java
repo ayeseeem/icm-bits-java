@@ -7,6 +7,7 @@ import static org.ayeseeem.test.ExhaustiveCaseCheckerTest.Cases.TWO;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.junit.Assert.fail;
 
 import java.util.EnumSet;
@@ -43,6 +44,26 @@ public class ExhaustiveCaseCheckerTest {
     }
 
     @Test
+    public void testCheckAll_SimpleExample_Passing_UsingAlternativeEnumConstructor() {
+        ExhaustiveCaseChecker<Cases> subject = new ExhaustiveCaseChecker<>(Cases.class);
+
+        subject.checkAll(
+                () -> assertThat(ONE.name(), is("ONE")),
+                () -> assertThat(TWO.name(), is("TWO")),
+                () -> assertThat(THREE.name(), is("THREE")));
+    }
+
+    @Test
+    public void testCheckAll_SimpleExample_Passing_UsingStaticFactoryMethodForEnum() {
+        ExhaustiveCaseChecker<Cases> subject = ExhaustiveCaseChecker.forEnum(Cases.class);
+
+        subject.checkAll(
+                () -> assertThat(ONE.name(), is("ONE")),
+                () -> assertThat(TWO.name(), is("TWO")),
+                () -> assertThat(THREE.name(), is("THREE")));
+    }
+
+    @Test
     public void testCheckAll_SimpleExample_Failing() {
         ExhaustiveCaseChecker<Cases> subject = new ExhaustiveCaseChecker<>(
                 setOf(Cases.values()));
@@ -60,6 +81,27 @@ public class ExhaustiveCaseCheckerTest {
         }
 
         fail(ASSERTION_ERROR_EXPECTED);
+    }
+
+    @Test
+    public void testCheckAll_CapturesTheCases() {
+        ExhaustiveCaseChecker<Cases> subject = new ExhaustiveCaseChecker<>(setOf(Cases.values()));
+
+        assertThat(subject.getCases(), containsInAnyOrder(ONE, TWO, THREE));
+    }
+
+    @Test
+    public void testCheckAll_UsingAlternativeEnumConstructor_CapturesTheCases() {
+        ExhaustiveCaseChecker<Cases> subject = new ExhaustiveCaseChecker<>(Cases.class);
+
+        assertThat(subject.getCases(), containsInAnyOrder(ONE, TWO, THREE));
+    }
+
+    @Test
+    public void testCheckAll_UsingStaticFactoryMethodForEnum_CapturesTheCases() {
+        ExhaustiveCaseChecker<Cases> subject = ExhaustiveCaseChecker.forEnum(Cases.class);
+
+        assertThat(subject.getCases(), containsInAnyOrder(ONE, TWO, THREE));
     }
 
     @Test
