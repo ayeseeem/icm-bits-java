@@ -10,8 +10,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.junit.Assert.fail;
 
-import java.util.EnumSet;
-
 import org.ayeseeem.test.ExhaustiveCaseChecker.ExhaustiveCaseCheck;
 import org.junit.Test;
 
@@ -19,48 +17,6 @@ public class ExhaustiveCaseCheckerTest {
 
     enum Cases {
         ONE, TWO, THREE
-    }
-
-    @Test
-    public void testCheckAll_SimpleExample_Passing() {
-        ExhaustiveCaseChecker<Cases> subject = new ExhaustiveCaseChecker<>(
-                setOf(Cases.values()));
-
-        subject.checkAll(
-                () -> assertThat(ONE.name(), is("ONE")),
-                () -> assertThat(TWO.name(), is("TWO")),
-                () -> assertThat(THREE.name(), is("THREE")));
-    }
-
-    @Test
-    public void testCheckAll_SimpleExample_Passing_UsingAlternativeEnumSyntax() {
-        ExhaustiveCaseChecker<Cases> subject = new ExhaustiveCaseChecker<>(
-                EnumSet.allOf(Cases.class));
-
-        subject.checkAll(
-                () -> assertThat(ONE.name(), is("ONE")),
-                () -> assertThat(TWO.name(), is("TWO")),
-                () -> assertThat(THREE.name(), is("THREE")));
-    }
-
-    @Test
-    public void testCheckAll_SimpleExample_Passing_UsingAlternativeEnumConstructor() {
-        ExhaustiveCaseChecker<Cases> subject = new ExhaustiveCaseChecker<>(Cases.class);
-
-        subject.checkAll(
-                () -> assertThat(ONE.name(), is("ONE")),
-                () -> assertThat(TWO.name(), is("TWO")),
-                () -> assertThat(THREE.name(), is("THREE")));
-    }
-
-    @Test
-    public void testCheckAll_SimpleExample_Passing_UsingStaticFactoryMethodForEnum() {
-        ExhaustiveCaseChecker<Cases> subject = ExhaustiveCaseChecker.forEnum(Cases.class);
-
-        subject.checkAll(
-                () -> assertThat(ONE.name(), is("ONE")),
-                () -> assertThat(TWO.name(), is("TWO")),
-                () -> assertThat(THREE.name(), is("THREE")));
     }
 
     @Test
