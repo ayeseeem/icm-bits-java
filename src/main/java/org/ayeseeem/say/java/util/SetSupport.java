@@ -74,7 +74,7 @@ public class SetSupport {
      *            member type
      * @param members
      *            the members of the set
-     * @return a new, modifiable {@code Set}
+     * @return a new, unmodifiable {@code Set}
      *
      * @see #modifiableSetOf(Object...)
      */
