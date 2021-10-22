@@ -97,6 +97,24 @@ if (myFavouriteMonths.contains(month)) {
 }
 ```
 
+Note that this can also be used to avoid certain types of errors that are hard
+to spot, often caused by copy-and-paste with repeated tests in long `if`
+statements. For example, you can replace the (broken)
+
+```java
+if (longComplicatedlyNamedThing1 == 1 || longComplicatedlyNamedThing2 == 3 || longComplicatedlyNamedThing1 == 7)
+```
+
+with the less error-prone
+
+```java
+if (the(longComplicatedlyNamedThing1).isOneOf(1, 3, 7))
+```
+
+Although this appears to sacrifice the "short-circuit" behaviour of `||`,
+`List.contains()` presumably acts similarly, at least if the values are simple
+values, not expressions to be evaluated.
+
 Works for a `Collection`, an array of objects, or individual items listed
 directly (using varargs).
 See

@@ -67,4 +67,29 @@ public class ContainedItemExamplesTest {
         }
     }
 
+    public static class AvoidVariableNameErrorExample {
+        int longComplicatedlyNamedThing1 = 3;
+        int longComplicatedlyNamedThing2 = 6;
+
+        String exampleFunctionWithMistake() {
+            if (longComplicatedlyNamedThing1 == 1 || longComplicatedlyNamedThing2 == 3 || longComplicatedlyNamedThing1 == 7) {
+                return "working";
+            }
+            return "broken";
+        }
+
+        String exampleFunctionWorking() {
+            if (the(longComplicatedlyNamedThing1).isOneOf(1, 3, 7)) {
+                return "working";
+            }
+            return "broken";
+        }
+
+        @Test
+        public void testExampleContainedItem_IsOneOf() {
+            assertThat(exampleFunctionWithMistake(), is("broken"));
+            assertThat(exampleFunctionWorking(), is("working"));
+        }
+    }
+
 }
