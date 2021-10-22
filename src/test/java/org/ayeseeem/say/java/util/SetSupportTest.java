@@ -1,6 +1,7 @@
 package org.ayeseeem.say.java.util;
 
 import static org.ayeseeem.say.java.util.DummyValue.dummy;
+import static org.ayeseeem.say.java.util.ListSupport.listOf;
 import static org.ayeseeem.say.java.util.SetSupport.alwaysEmptySet;
 import static org.ayeseeem.say.java.util.SetSupport.emptySet;
 import static org.ayeseeem.say.java.util.SetSupport.initiallyEmptySet;
@@ -13,6 +14,7 @@ import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.empty;
 
+import java.util.List;
 import java.util.Set;
 
 import org.ayeseeem.test.Characterization;
@@ -59,6 +61,25 @@ public class SetSupportTest {
         Set<String> set = setOf("a", "b", "c");
 
         set.add("d");
+    }
+
+    @Test
+    public void testSetOf_Modifiability_Matches_ListOf() {
+        Set<String> defaultSet = setOf();
+        try {
+            defaultSet.add("a");
+        } catch (UnsupportedOperationException possible) {
+            // might be unmodifiable
+        }
+
+        List<String> defaultList = listOf();
+        try {
+            defaultList.add("a");
+        } catch (UnsupportedOperationException possible) {
+            // might be unmodifiable
+        }
+
+        assertThat(defaultSet.size(), is(defaultList.size()));
     }
 
     @Test

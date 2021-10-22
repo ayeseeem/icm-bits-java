@@ -7,6 +7,7 @@ import static org.ayeseeem.say.java.util.ListSupport.initiallyEmptyList;
 import static org.ayeseeem.say.java.util.ListSupport.listOf;
 import static org.ayeseeem.say.java.util.ListSupport.modifiableListOf;
 import static org.ayeseeem.say.java.util.ListSupport.unmodifiableListOf;
+import static org.ayeseeem.say.java.util.SetSupport.setOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
@@ -15,6 +16,7 @@ import static org.hamcrest.Matchers.empty;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 import org.ayeseeem.test.Characterization;
 import org.junit.Test;
@@ -75,6 +77,25 @@ public class ListSupportTest {
         List<String> list = listOf("a", "b");
         list.set(0, "new entry");
         assertThat(list, contains("new entry", "b"));
+    }
+
+    @Test
+    public void testListOf_Modifiability_Matches_SetOf() {
+        List<String> defaultList = listOf();
+        try {
+            defaultList.add("a");
+        } catch (UnsupportedOperationException possible) {
+            // might be unmodifiable
+        }
+
+        Set<String> defaultSet = setOf();
+        try {
+            defaultSet.add("a");
+        } catch (UnsupportedOperationException possible) {
+            // might be unmodifiable
+        }
+
+        assertThat(defaultList.size(), is(defaultSet.size()));
     }
 
     @Test
