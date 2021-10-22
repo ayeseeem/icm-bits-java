@@ -1,6 +1,9 @@
 package org.ayeseeem.say.java.util;
 
 import static org.ayeseeem.say.java.util.DummyValue.dummy;
+import static org.ayeseeem.say.java.util.ListSupport.alwaysEmptyList;
+import static org.ayeseeem.say.java.util.ListSupport.emptyList;
+import static org.ayeseeem.say.java.util.ListSupport.initiallyEmptyList;
 import static org.ayeseeem.say.java.util.ListSupport.listOf;
 import static org.ayeseeem.say.java.util.ListSupport.modifiableListOf;
 import static org.ayeseeem.say.java.util.ListSupport.unmodifiableListOf;
@@ -75,6 +78,30 @@ public class ListSupportTest {
     }
 
     @Test
+    public void testEmptyList() {
+        assertThat(emptyList(), is(empty()));
+    }
+
+    @Test
+    public void testEmptyList_Modifiability_Matches_Simple_ListOf() {
+        List<String> defaultList = listOf();
+        try {
+            defaultList.add("a");
+        } catch (UnsupportedOperationException possible) {
+            // might be unmodifiable
+        }
+
+        List<String> emptyList = emptyList();
+        try {
+            emptyList.add("a");
+        } catch (UnsupportedOperationException possible) {
+            // might be unmodifiable
+        }
+
+        assertThat(defaultList, is(emptyList));
+    }
+
+    @Test
     public void testModifiableListOf() {
         assertThat(modifiableListOf("a", "b", "c"), contains("a", "b", "c"));
     }
@@ -123,6 +150,32 @@ public class ListSupportTest {
     @Test
     public void testModifiableListOf_CreatesListWhereElementsCanBeSubstituted() {
         List<String> list = modifiableListOf("a", "b");
+        list.set(0, "new entry");
+        assertThat(list, contains("new entry", "b"));
+    }
+
+    @Test
+    public void testInitiallyEmptyList() {
+        assertThat(initiallyEmptyList(), is(empty()));
+    }
+
+    @Test
+    public void testInitiallyEmptyList_CreatesStructurallyModifiableList() {
+        List<String> list = initiallyEmptyList();
+
+        list.add("a");
+        list.add("b");
+        assertThat(list, contains("a", "b"));
+    }
+
+    @Test
+    public void testInitiallyEmptyList_CreatesListWhereElementsCanBeSubstituted() {
+        List<String> list = initiallyEmptyList();
+
+        list.add("a");
+        list.add("b");
+        assertThat(list, contains("a", "b"));
+
         list.set(0, "new entry");
         assertThat(list, contains("new entry", "b"));
     }
@@ -182,6 +235,18 @@ public class ListSupportTest {
         List<String> list = unmodifiableListOf("a", "b");
         list.set(0, "new entry");
         assertThat(list, contains("new entry", "b"));
+    }
+
+    @Test
+    public void testAlwaysEmptyList() {
+        assertThat(alwaysEmptyList(), is(empty()));
+    }
+
+    @Test(expected = UnsupportedOperationException.class)
+    public void testAlwaysEmptyList_CreatesStructurallyUnmodifiableList_CannotAddElement() {
+        List<String> list = alwaysEmptyList();
+
+        list.add("a");
     }
 
     @Characterization

@@ -1,14 +1,21 @@
 package org.ayeseeem.say.java.util;
 
 import static org.ayeseeem.say.java.util.DummyValue.dummy;
+import static org.ayeseeem.say.java.util.SetSupport.alwaysEmptySet;
+import static org.ayeseeem.say.java.util.SetSupport.emptySet;
+import static org.ayeseeem.say.java.util.SetSupport.initiallyEmptySet;
 import static org.ayeseeem.say.java.util.SetSupport.modifiableSetOf;
 import static org.ayeseeem.say.java.util.SetSupport.setOf;
 import static org.ayeseeem.say.java.util.SetSupport.unmodifiableSetOf;
+import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.containsInAnyOrder;
+import static org.hamcrest.Matchers.empty;
 
 import java.util.Set;
 
+import org.ayeseeem.test.Characterization;
 import org.junit.Test;
 
 public class SetSupportTest {
@@ -55,6 +62,30 @@ public class SetSupportTest {
     }
 
     @Test
+    public void testEmptySet() {
+        assertThat(emptySet(), is(empty()));
+    }
+
+    @Test
+    public void testEmptySet_Modifiability_Matches_Simple_SetOf() {
+        Set<String> defaultSet= setOf();
+        try {
+            defaultSet.add("a");
+        } catch (UnsupportedOperationException possible) {
+            // might be unmodifiable
+        }
+
+        Set<String> emptySet = emptySet();
+        try {
+            emptySet.add("a");
+        } catch (UnsupportedOperationException possible) {
+            // might be unmodifiable
+        }
+
+        assertThat(defaultSet, is(emptySet));
+    }
+
+    @Test
     public void testModifiableSetOf() {
         assertThat(modifiableSetOf("a", "b", "c"), containsInAnyOrder("a", "b", "c"));
     }
@@ -90,6 +121,20 @@ public class SetSupportTest {
         set.add("d");
         set.add("e");
         assertThat(set, containsInAnyOrder("a", "c", "d", "e"));
+    }
+
+    @Test
+    public void testInitiallyEmptySet() {
+        assertThat(initiallyEmptySet(), is(empty()));
+    }
+
+    @Test
+    public void testInitiallyEmptySet_CreatesStructurallyModifiableSet() {
+        Set<String> set = initiallyEmptySet();
+
+        set.add("a");
+        set.add("b");
+        assertThat(set, contains("a", "b"));
     }
 
     @Test
@@ -131,6 +176,19 @@ public class SetSupportTest {
         Set<String> set = unmodifiableSetOf("a", "b", "c");
 
         set.add("d");
+    }
+
+    @Test
+    public void testAlwaysEmptySet() {
+        assertThat(alwaysEmptySet(), is(empty()));
+    }
+
+    @Characterization
+    @Test(expected = UnsupportedOperationException.class)
+    public void testAlwaysEmptySet_CreatesStructurallyUnmodifiableSet_CannotAddElement() {
+        Set<String> set = alwaysEmptySet();
+
+        set.add("a");
     }
 
 }

@@ -26,11 +26,28 @@ public class SetSupport {
      * @return a new, unmodifiable {@code Set}
      *
      * @see #unmodifiableSetOf(Object...)
+     * @see #modifiableSetOf(Object...)
+     * @see #emptySet()
      * @see ListSupport#listOf(Object...)
      */
     @SafeVarargs
     public static <T> Set<T> setOf(T... members) {
         return unmodifiableSetOf(members);
+    }
+
+    /**
+     * Creates an empty set in a more expressive way than using {@code setOf()}
+     * ({@link #setOf(Object...)} with no arguments). If modifiability is
+     * significant, use {@link #initiallyEmptySet()} or {@link #alwaysEmptySet()}.
+     *
+     * @param <T>
+     *            member type
+     * @return an empty set the equivalent of using {@code setOf()}
+     *
+     * @see #setOf(Object...)
+     */
+    public static <T> Set<T> emptySet() {
+        return setOf();
     }
 
     /**
@@ -49,12 +66,29 @@ public class SetSupport {
      * @return a new, modifiable {@code Set}
      *
      * @see #unmodifiableSetOf(Object...)
+     * @see #initiallyEmptySet()
      */
     @SafeVarargs
     public static <T> Set<T> modifiableSetOf(T... members) {
         Set<T> set = new HashSet<>();
         set.addAll(Arrays.asList(members));
         return set;
+    }
+
+    /**
+     * Creates an empty, modifiable {@link Set} in a more expressive way than using
+     * {@code modifiableSetOf()} ({@link #modifiableSetOf(Object...)} with no
+     * arguments).
+     *
+     * @param <T>
+     *            member type
+     * @return a new, modifiable {@code Set}
+     *
+     * @see #modifiableSetOf(Object...)
+     * @see #alwaysEmptySet()
+     */
+    public static <T> Set<T> initiallyEmptySet() {
+        return modifiableSetOf();
     }
 
     /**
@@ -77,12 +111,29 @@ public class SetSupport {
      * @return a new, unmodifiable {@code Set}
      *
      * @see #modifiableSetOf(Object...)
+     * @see #alwaysEmptySet()
      */
     @SafeVarargs
     public static <T> Set<T> unmodifiableSetOf(T... members) {
         Set<T> set = new HashSet<>();
         set.addAll(Arrays.asList(members));
         return Collections.unmodifiableSet(set);
+    }
+
+    /**
+     * Creates an empty, unmodifiable {@link Set} in a more expressive way than
+     * using {@code unmodifiableSetOf()} ({@link #unmodifiableSetOf(Object...)}
+     * with no arguments).
+     *
+     * @param <T>
+     *            member type
+     * @return a new, unmodifiable {@code Set}
+     *
+     * @see #unmodifiableSetOf(Object...)
+     * @see #initiallyEmptySet()
+     */
+    public static <T> Set<T> alwaysEmptySet() {
+        return unmodifiableSetOf();
     }
 
 }

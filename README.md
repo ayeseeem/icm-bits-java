@@ -27,13 +27,18 @@ If you want to emphasize the nature of the collection, you can use
 `unmodifiableListOf()` and `unmodifiableSetOf()`.
 These are like Java's `Collections.unmodifiableList()`, and
 `Collections.unmodifiableSet()`, but they take varargs, not a collection.
+There are modifiable equivalents: `modifiableListOf()` and `modifiableSetOf()`.
+
+If you want an empty list, use `emptyList()`, which is clearer than writing
+`listOf()` with no arguments.
+If modifiability is significant, use `initiallyEmptyList()` or
+`alwaysEmptyList()`.
+There are set equivalents: `emptySet()`, `initiallyEmptySet()`, and
+`alwaysEmptySet()`.
 
 Now with Java 9+ you can now use `List.of` and `Set.of`, so perhaps some of these
 are no longer needed. But note that the details of mutability and modifiability
 might be different.
-
-There are also modifiable equivalents, `modifiableListOf()` and
-`modifiableSetOf()`.
 
 (See
 [`ListSupport.java`](https://github.com/ayeseeem/icm-bits-java/blob/master/src/main/java/org/ayeseeem/say/java/util/ListSupport.java),

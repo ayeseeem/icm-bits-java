@@ -28,11 +28,28 @@ public class ListSupport {
      * @return a new, unmodifiable {@code List}
      *
      * @see #unmodifiableListOf(Object...)
+     * @see #modifiableListOf(Object...)
+     * @see #emptyList()
      * @see SetSupport#setOf(Object...)
      */
     @SafeVarargs
     public static <T> List<T> listOf(T... members) {
         return unmodifiableListOf(members);
+    }
+
+    /**
+     * Creates an empty list in a more expressive way than using {@code listOf()}
+     * ({@link #listOf(Object...)} with no arguments). If modifiability is
+     * significant, use {@link #initiallyEmptyList()} or {@link #alwaysEmptyList()}.
+     *
+     * @param <T>
+     *            member type
+     * @return an empty list the equivalent of using {@code listOf()}
+     *
+     * @see #listOf(Object...)
+     */
+    public static <T> List<T> emptyList() {
+        return listOf();
     }
 
     /**
@@ -51,10 +68,27 @@ public class ListSupport {
      * @return a new, modifiable {@code List}
      *
      * @see #unmodifiableListOf(Object...)
+     * @see #initiallyEmptyList()
      */
     @SafeVarargs
     public static <T> List<T> modifiableListOf(T... members) {
         return new ArrayList<>(Arrays.asList(members));
+    }
+
+    /**
+     * Creates an empty, modifiable {@link List} in a more expressive way than using
+     * {@code modifiableListOf()} ({@link #modifiableListOf(Object...)} with no
+     * arguments).
+     *
+     * @param <T>
+     *            member type
+     * @return a new, modifiable {@code List}
+     *
+     * @see #modifiableListOf(Object...)
+     * @see #alwaysEmptyList()
+     */
+    public static <T> List<T> initiallyEmptyList() {
+        return modifiableListOf();
     }
 
     /**
@@ -76,10 +110,27 @@ public class ListSupport {
      * @return a new, unmodifiable {@code List}
      *
      * @see #modifiableListOf(Object...)
+     * @see #alwaysEmptyList()
      */
     @SafeVarargs
     public static <T> List<T> unmodifiableListOf(T... members) {
         return Arrays.asList(members);
+    }
+
+    /**
+     * Creates an empty, unmodifiable {@link List} in a more expressive way than
+     * using {@code unmodifiableListOf()} ({@link #unmodifiableListOf(Object...)}
+     * with no arguments).
+     *
+     * @param <T>
+     *            member type
+     * @return a new, unmodifiable {@code List}
+     *
+     * @see #unmodifiableListOf(Object...)
+     * @see #initiallyEmptyList()
+     */
+    public static <T> List<T> alwaysEmptyList() {
+        return unmodifiableListOf();
     }
 
 }
