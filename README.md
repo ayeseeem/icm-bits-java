@@ -43,7 +43,8 @@ might be different.
 (See
 [`ListSupport.java`](https://github.com/ayeseeem/icm-bits-java/blob/master/src/main/java/org/ayeseeem/say/java/util/ListSupport.java),
 [`SetSupport.java`](https://github.com/ayeseeem/icm-bits-java/blob/master/src/main/java/org/ayeseeem/say/java/util/SetSupport.java),
-[`ListSupportExamplesTest.java`](https://github.com/ayeseeem/icm-bits-java/blob/master/src/test/java/org/ayeseeem/say/example/ListSupportExamplesTest.java), and
+[`ListSupportExamplesTest.java`](https://github.com/ayeseeem/icm-bits-java/blob/master/src/test/java/org/ayeseeem/say/example/ListSupportExamplesTest.java),
+and
 [`SetSupportExamplesTest.java`](https://github.com/ayeseeem/icm-bits-java/blob/master/src/test/java/org/ayeseeem/say/example/SetSupportExamplesTest.java)
 for more details.
 )
@@ -64,7 +65,8 @@ supportedCodes = new TreeMap<>(); // key-sorted
 latestCodes = new LinkedHashMap<>(); // insertion-ordered
 ```
 (See
-[`MapSupport.java`](https://github.com/ayeseeem/icm-bits-java/blob/master/src/main/java/org/ayeseeem/say/java/util/MapSupport.java) and
+[`MapSupport.java`](https://github.com/ayeseeem/icm-bits-java/blob/master/src/main/java/org/ayeseeem/say/java/util/MapSupport.java)
+and
 [`MapSupportExamplesTest.java`](https://github.com/ayeseeem/icm-bits-java/blob/master/src/test/java/org/ayeseeem/say/example/MapSupportExamplesTest.java)
 for more details.
 )
@@ -141,7 +143,8 @@ or describe, or document) the behaviour of the code, but without necessarily
 ```
 
 See
-[`Characterization.java`](https://github.com/ayeseeem/icm-bits-java/blob/master/src/main/java/org/ayeseeem/test/Characterization.java) for more details.
+[`Characterization.java`](https://github.com/ayeseeem/icm-bits-java/blob/master/src/main/java/org/ayeseeem/test/Characterization.java)
+for more details.
 
 
 Coding Standard
