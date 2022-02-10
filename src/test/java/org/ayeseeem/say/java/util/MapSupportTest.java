@@ -31,6 +31,16 @@ public class MapSupportTest {
     }
 
     @Test
+    public void testKeySortedMap_DifferentTypes() {
+        Map<String, Integer> result = keySortedMap();
+        result.put("9", 12345);
+        result.put("1", 12345);
+        result.put("5", 12345);
+
+        assertThat(result.keySet(), contains("1", "5", "9"));
+    }
+
+    @Test
     public void testKeySortedMap_KeysAreSorted_NotCoincidentallySortedByValue() {
         Map<Integer, String> result = keySortedMap();
         result.put(9, "some differently unsorted string aaa");
@@ -105,6 +115,16 @@ public class MapSupportTest {
         result.put(5, "some string");
 
         assertThat(result.keySet(), contains(9, 1, 5));
+    }
+
+    @Test
+    public void testInsertionOrderedMap_DifferentTypes() {
+        Map<String, Integer> result = insertionOrderedMap();
+        result.put("9", 12345);
+        result.put("1", 12345);
+        result.put("5", 12345);
+
+        assertThat(result.keySet(), contains("9", "1", "5"));
     }
 
     @Test

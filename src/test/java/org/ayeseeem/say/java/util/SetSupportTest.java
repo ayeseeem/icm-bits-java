@@ -88,6 +88,12 @@ public class SetSupportTest {
     }
 
     @Test
+    public void testEmptySet_ArbitraryType() {
+        Set<DummyValue> emptySet = emptySet();
+        assertThat(emptySet, is(empty()));
+    }
+
+   @Test
     public void testEmptySet_Modifiability_Matches_Simple_SetOf() {
         Set<String> defaultSet= setOf();
         try {
@@ -159,6 +165,15 @@ public class SetSupportTest {
     }
 
     @Test
+    public void testInitiallyEmptySet_ArbitraryType() {
+        Set<DummyValue> set = initiallyEmptySet();
+
+        set.add(dummy(1));
+        set.add(dummy(2));
+        assertThat(set, contains(dummy(1), dummy(2)));
+    }
+
+    @Test
     public void testUnmodifiableSetOf() {
         assertThat(unmodifiableSetOf("a", "b", "c"), containsInAnyOrder("a", "b", "c"));
     }
@@ -202,6 +217,12 @@ public class SetSupportTest {
     @Test
     public void testAlwaysEmptySet() {
         assertThat(alwaysEmptySet(), is(empty()));
+    }
+
+    @Test
+    public void testAlwaysEmptySet_ArbitraryType() {
+        Set<DummyValue> alwaysEmptySet = alwaysEmptySet();
+        assertThat(alwaysEmptySet, is(empty()));
     }
 
     @Characterization

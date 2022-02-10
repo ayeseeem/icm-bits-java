@@ -104,6 +104,12 @@ public class ListSupportTest {
     }
 
     @Test
+    public void testEmptyList_ArbitraryType() {
+        List<DummyValue> emptyList = emptyList();
+        assertThat(emptyList, is(empty()));
+    }
+
+    @Test
     public void testEmptyList_Modifiability_Matches_Simple_ListOf() {
         List<String> defaultList = listOf();
         try {
@@ -190,6 +196,15 @@ public class ListSupportTest {
     }
 
     @Test
+    public void testInitiallyEmptyList_ArbitraryType() {
+        List<DummyValue> list = initiallyEmptyList();
+
+        list.add(dummy(1));
+        list.add(dummy(2));
+        assertThat(list, contains(dummy(1), dummy(2)));
+    }
+
+    @Test
     public void testInitiallyEmptyList_CreatesListWhereElementsCanBeSubstituted() {
         List<String> list = initiallyEmptyList();
 
@@ -261,6 +276,12 @@ public class ListSupportTest {
     @Test
     public void testAlwaysEmptyList() {
         assertThat(alwaysEmptyList(), is(empty()));
+    }
+
+    @Test
+    public void testAlwaysEmptyList_ArbitraryType() {
+        List<DummyValue> alwaysEmptyList = alwaysEmptyList();
+        assertThat(alwaysEmptyList, is(empty()));
     }
 
     @Test(expected = UnsupportedOperationException.class)
