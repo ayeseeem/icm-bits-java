@@ -126,8 +126,10 @@ and
 for more details.
 
 
-`@Characterization` annotation for JUnit `@Test`s
--------------------------------------------------
+Help for Writing Characterization Tests
+---------------------------------------
+
+### `@Characterization` annotation for JUnit `@Test`s ###
 
 Marks unit tests (whole test classes, or individual test methods) as
 characterization tests. That is, tests that *characterize* (capture,
@@ -144,6 +146,36 @@ or describe, or document) the behaviour of the code, but without necessarily
 
 See
 [`Characterization.java`](https://github.com/ayeseeem/icm-bits-java/blob/master/src/main/java/org/ayeseeem/test/Characterization.java)
+for more details.
+
+
+### Document and Test Ideal and Current Behaviour ###
+
+Write a characterization test that both shows what the current behaviour is,
+_and_ what it _should_ be. If the behaviour is ever corrected, the test will
+start failing, highlighting the fix, so you can consider the implications.
+
+For example, instead of writing
+
+```java
+assertThat(findBooks("unknown author"), is(nullValue())); // should be empty
+```
+
+you can write
+
+```java
+assertThat(findBooks("unknown author"),
+        ideally(is(empty()))
+        .butCurrently(is(nullValue())));
+```
+
+The terms "ideally" and "currently" are chosen to be expressive, and to avoid
+confusion with the terms "expected" and "actual" that are used in normal tests.
+
+See
+[`CharacterizationMatcher.java`](https://github.com/ayeseeem/icm-bits-java/blob/master/src/main/java/org/ayeseeem/test/CharacterizationMatcher.java)
+and
+[`CharacterizationMatcherExampleTest.java`](https://github.com/ayeseeem/icm-bits-java/blob/master/src/main/java/org/ayeseeem/test/example/CharacterizationMatcherExampleTest.java)
 for more details.
 
 
