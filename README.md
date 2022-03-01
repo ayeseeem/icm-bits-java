@@ -158,7 +158,8 @@ start failing, highlighting the fix, so you can consider the implications.
 For example, instead of writing
 
 ```java
-assertThat(findBooks("unknown author"), is(nullValue())); // should be empty
+assertThat(findBooks("unknown author"),
+        is(nullValue())); // should be empty
 ```
 
 you can write
@@ -175,7 +176,7 @@ confusion with the terms "expected" and "actual" that are used in normal tests.
 See
 [`CharacterizationMatcher.java`](https://github.com/ayeseeem/icm-bits-java/blob/master/src/main/java/org/ayeseeem/test/CharacterizationMatcher.java)
 and
-[`CharacterizationMatcherExampleTest.java`](https://github.com/ayeseeem/icm-bits-java/blob/master/src/main/java/org/ayeseeem/test/example/CharacterizationMatcherExampleTest.java)
+[`CharacterizationMatcherExampleTest.java`](https://github.com/ayeseeem/icm-bits-java/blob/master/src/test/java/org/ayeseeem/test/example/CharacterizationMatcherExampleTest.java)
 for more details.
 
 
