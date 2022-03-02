@@ -41,11 +41,11 @@ are no longer needed. But note that the details of mutability and modifiability
 might be different.
 
 (See
-[`ListSupport.java`](https://github.com/ayeseeem/icm-bits-java/blob/master/src/main/java/org/ayeseeem/say/java/util/ListSupport.java),
-[`SetSupport.java`](https://github.com/ayeseeem/icm-bits-java/blob/master/src/main/java/org/ayeseeem/say/java/util/SetSupport.java),
-[`ListSupportExamplesTest.java`](https://github.com/ayeseeem/icm-bits-java/blob/master/src/test/java/org/ayeseeem/say/example/ListSupportExamplesTest.java),
+[`ListSupport.java`](src/main/java/org/ayeseeem/say/java/util/ListSupport.java),
+[`SetSupport.java`](src/main/java/org/ayeseeem/say/java/util/SetSupport.java),
+[`ListSupportExamplesTest.java`](src/test/java/org/ayeseeem/say/example/ListSupportExamplesTest.java),
 and
-[`SetSupportExamplesTest.java`](https://github.com/ayeseeem/icm-bits-java/blob/master/src/test/java/org/ayeseeem/say/example/SetSupportExamplesTest.java)
+[`SetSupportExamplesTest.java`](src/test/java/org/ayeseeem/say/example/SetSupportExamplesTest.java)
 for more details.
 )
 
@@ -65,9 +65,9 @@ supportedCodes = new TreeMap<>(); // key-sorted
 latestCodes = new LinkedHashMap<>(); // insertion-ordered
 ```
 (See
-[`MapSupport.java`](https://github.com/ayeseeem/icm-bits-java/blob/master/src/main/java/org/ayeseeem/say/java/util/MapSupport.java)
+[`MapSupport.java`](src/main/java/org/ayeseeem/say/java/util/MapSupport.java)
 and
-[`MapSupportExamplesTest.java`](https://github.com/ayeseeem/icm-bits-java/blob/master/src/test/java/org/ayeseeem/say/example/MapSupportExamplesTest.java)
+[`MapSupportExamplesTest.java`](src/test/java/org/ayeseeem/say/example/MapSupportExamplesTest.java)
 for more details.
 )
 
@@ -120,9 +120,9 @@ values, not expressions to be evaluated.
 Works for a `Collection`, an array of objects, or individual items listed
 directly (using varargs).
 See
-[`ContainedItem.java`](https://github.com/ayeseeem/icm-bits-java/blob/master/src/main/java/org/ayeseeem/say/ContainedItem.java)
+[`ContainedItem.java`](src/main/java/org/ayeseeem/say/ContainedItem.java)
 and
-[`ContainedItemExamplesTest.java`](https://github.com/ayeseeem/icm-bits-java/blob/master/src/test/java/org/ayeseeem/say/example/ContainedItemExamplesTest.java)
+[`ContainedItemExamplesTest.java`](src/test/java/org/ayeseeem/say/example/ContainedItemExamplesTest.java)
 for more details.
 
 
@@ -145,7 +145,7 @@ or describe, or document) the behaviour of the code, but without necessarily
 ```
 
 See
-[`Characterization.java`](https://github.com/ayeseeem/icm-bits-java/blob/master/src/main/java/org/ayeseeem/test/Characterization.java)
+[`Characterization.java`](src/main/java/org/ayeseeem/test/Characterization.java)
 for more details.
 
 
@@ -174,9 +174,9 @@ The terms "ideally" and "currently" are chosen to be expressive, and to avoid
 confusion with the terms "expected" and "actual" that are used in normal tests.
 
 See
-[`CharacterizationMatcher.java`](https://github.com/ayeseeem/icm-bits-java/blob/master/src/main/java/org/ayeseeem/test/CharacterizationMatcher.java)
+[`CharacterizationMatcher.java`](src/main/java/org/ayeseeem/test/CharacterizationMatcher.java)
 and
-[`CharacterizationMatcherExampleTest.java`](https://github.com/ayeseeem/icm-bits-java/blob/master/src/test/java/org/ayeseeem/test/example/CharacterizationMatcherExampleTest.java)
+[`CharacterizationMatcherExampleTest.java`](src/test/java/org/ayeseeem/test/example/CharacterizationMatcherExampleTest.java)
 for more details.
 
 
