@@ -64,6 +64,7 @@ latestCodes = insertionOrderedMap();
 supportedCodes = new TreeMap<>(); // key-sorted
 latestCodes = new LinkedHashMap<>(); // insertion-ordered
 ```
+
 (See
 [`MapSupport.java`](src/main/java/org/ayeseeem/say/java/util/MapSupport.java)
 and
@@ -152,7 +153,7 @@ for more details.
 ### Document and Test Ideal and Current Behaviour ###
 
 Write a characterization test that both shows what the current behaviour is,
-_and_ what it _should_ be. If the behaviour is ever corrected, the test will
+*and* what it *should* be. If the behaviour is ever corrected, the test will
 start failing, highlighting the fix, so you can consider the implications.
 
 For example, instead of writing
