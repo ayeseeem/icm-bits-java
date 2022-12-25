@@ -145,6 +145,17 @@ or describe, or document) the behaviour of the code, but without necessarily
  }
 ```
 
+Note that a *reason* can be specified if wanted (using the `value` attribute,
+which does not need to be specified explicitly):
+
+```java
+ @Characterization("Currently null not empty - don't know why")
+ @Test
+ public void testDefaultResponse() {
+     assertThat(defaultResponse, is(nullValue()));
+ }
+```
+
 See
 [`Characterization.java`](src/main/java/org/ayeseeem/test/Characterization.java)
 for more details.

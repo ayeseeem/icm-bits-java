@@ -53,4 +53,30 @@ public class CharacterizationTest {
         assertThat(annotation, is(nullValue()));
     }
 
+    @Characterization("Cannot test value/reason - not currently retained at runtim")
+    @Test
+    public void exampleCharacterization_Usage() {
+
+        @Characterization
+        final class BareAnnnotation {
+            // empty class for testing
+        }
+
+        @Characterization()
+        final class AnnnotationWithDefault {
+            // empty class for testing
+        }
+
+        @Characterization("Example reason")
+        final class AnnnotationWithDefaultSpecified {
+            // empty class for testing
+        }
+
+        @Characterization(value = "Example reason")
+        final class AnnnotationWithValueSpecifiedExplicitly {
+            // empty class for testing
+        }
+    }
+
+
 }

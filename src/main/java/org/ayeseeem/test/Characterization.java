@@ -23,6 +23,16 @@ import java.lang.annotation.Target;
  * is a test that <em>describes</em> the current behaviour, but is <em>not</em>
  * a specification or requirement.
  * <p>
+ * A <em>reason</em> can be supplied via the {@link #value()}:
+ *
+ * <pre>
+ * &#64;Characterization("Currently null not empty - don't know why")
+ * &#64;Test
+ * public void testDefaultResponse() {
+ *     assertThat(defaultResponse, is(nullValue()));
+ * }
+ * </pre>
+ *
  * <b>Note</b> the preferred order - {@code @Characterization}, then
  * {@code @Test}. This ordering is not required, but it reads better: it is a
  * "characterization test", it doesn't "test (the) characterization".
@@ -43,5 +53,23 @@ import java.lang.annotation.Target;
 @Documented
 @Target({ TYPE, METHOD })
 public @interface Characterization {
-    // marker interface - no extra content
+
+    /**
+     * Optional reason, clarification, or explanation of the test, or of the current
+     * behaviour. Currently specified by the {@code value} attribute, so that it
+     * does not need to be specified explicitly, so you can write:
+     *
+     * <pre>
+     * &#64;Characterization("Some reason")
+     * </pre>
+     *
+     * instead of
+     *
+     * <pre>
+     * &#64;Characterization(value = "Some reason")
+     * </pre>
+     *
+     * @return the value/reason
+     */
+    String value() default "";
 }
