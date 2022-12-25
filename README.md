@@ -138,22 +138,22 @@ or describe, or document) the behaviour of the code, but without necessarily
 *specifying* the behaviour. For example,
 
 ```java
- @Characterization
- @Test
- public void testDefaultResponseIsNull() {
-     // ...
- }
+@Characterization
+@Test
+public void testDefaultResponseIsNull() {
+    // ...
+}
 ```
 
 Note that a *reason* can be specified if wanted (using the `value` attribute,
 which does not need to be specified explicitly):
 
 ```java
- @Characterization("Currently null not empty - don't know why")
- @Test
- public void testDefaultResponse() {
-     assertThat(defaultResponse, is(nullValue()));
- }
+@Characterization("Currently null not empty - don't know why")
+@Test
+public void testDefaultResponse() {
+    assertThat(defaultResponse, is(nullValue()));
+}
 ```
 
 See
