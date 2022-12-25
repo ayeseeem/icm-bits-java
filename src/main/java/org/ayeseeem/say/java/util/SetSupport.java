@@ -3,6 +3,7 @@ package org.ayeseeem.say.java.util;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 /**
@@ -134,6 +135,22 @@ public class SetSupport {
      */
     public static <T> Set<T> alwaysEmptySet() {
         return unmodifiableSetOf();
+    }
+
+    /**
+     * Creates an empty, modifiable {@code Set} where iteration order is insertion
+     * order.
+     * <p>
+     * This is a descriptive convenience method. It creates a {@link LinkedHashSet},
+     * but the method describes <em>why</em> this type of set is being chosen. The
+     * implementation is an irrelevant detail, it's the behaviour that is important.
+     *
+     * @param <T>
+     *            member type
+     * @return a new, modifiable {@code Set}
+     */
+    public static <T> Set<T> insertionOrderedSet() {
+        return new LinkedHashSet<>();
     }
 
 }

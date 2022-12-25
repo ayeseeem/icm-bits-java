@@ -5,6 +5,7 @@ import static org.ayeseeem.say.java.util.ListSupport.listOf;
 import static org.ayeseeem.say.java.util.SetSupport.alwaysEmptySet;
 import static org.ayeseeem.say.java.util.SetSupport.emptySet;
 import static org.ayeseeem.say.java.util.SetSupport.initiallyEmptySet;
+import static org.ayeseeem.say.java.util.SetSupport.insertionOrderedSet;
 import static org.ayeseeem.say.java.util.SetSupport.modifiableSetOf;
 import static org.ayeseeem.say.java.util.SetSupport.setOf;
 import static org.ayeseeem.say.java.util.SetSupport.unmodifiableSetOf;
@@ -13,7 +14,11 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.empty;
+import static org.hamcrest.Matchers.instanceOf;
 
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -231,6 +236,54 @@ public class SetSupportTest {
         Set<String> set = alwaysEmptySet();
 
         set.add("a");
+    }
+
+    @Test
+    public void testInsertionOrderedSet_ItemsAreInInsertionOrder() {
+        Set<Integer> result = insertionOrderedSet();
+        result.add(9);
+        result.add(1);
+        result.add(5);
+
+        assertThat(result, contains(9, 1, 5));
+    }
+
+    @Test
+    public void testInsertionOrderedSet_DifferentTypes() {
+        Set<String> result = insertionOrderedSet();
+        result.add("9");
+        result.add("1");
+        result.add("5");
+
+        assertThat(result, contains("9", "1", "5"));
+    }
+
+    @Test
+    public void testInsertionOrderedSet_ItemsIterateInInsertionOrder() {
+        Set<Integer> result = insertionOrderedSet();
+        result.add(9);
+        result.add(1);
+        result.add(5);
+
+        Iterator<Integer> iterator = result.iterator();
+        assertThat(iterator.next(), is(9));
+        assertThat(iterator.next(), is(1));
+        assertThat(iterator.next(), is(5));
+    }
+
+    @Test
+    public void testInsertionOrderedSet_CanBeEmpty() {
+        Set<Integer> result = insertionOrderedSet();
+
+        assertThat(result.isEmpty(), is(true));
+    }
+
+    @Test
+    public void testInsertionOrderedSet_ImplementationDetails() {
+        Set<Integer> result = insertionOrderedSet();
+
+        assertThat(result, is(instanceOf(HashSet.class)));
+        assertThat(result, is(instanceOf(LinkedHashSet.class)));
     }
 
 }
