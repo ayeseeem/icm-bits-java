@@ -115,18 +115,12 @@ public class DiagnosablyTest {
         assertThat((String) null, is((String) null));
     }
 
-    @Characterization
     @Test
-    public void testWhenBothNull_BehavesDIfferentlyToPlainIs_Fails_ButMessageIsParadoxical() {
+    public void testWhenBothNull_Passes() {
         assertThat((Calendar) null, is(nullValue()));
         assertThat((Calendar) null, is((Calendar) null));
 
-        // TODO: ICM 2023-01-03: There's a fix: check for both null in matcher
-        Error er = assertThrows(AssertionError.class, () -> {
-            assertThat((Calendar) null, is(diagnosably((Calendar) null)));
-        });
-        assertThat(er.getMessage(), containsString("Expected: is null"));
-        assertThat(er.getMessage(), containsString("but: was null"));
+        assertThat((Calendar) null, is(diagnosably((Calendar) null)));
     }
 
     private static Calendar localCalendar(String isoLocalDateTime) {

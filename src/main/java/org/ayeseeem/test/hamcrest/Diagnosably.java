@@ -55,6 +55,10 @@ public class Diagnosably extends BaseMatcher<Calendar> {
 
     @Override
     public boolean matches(Object item) {
+        if (item == null && expectedCalendar == null) {
+            return true;
+        }
+
         if (!(item instanceof Calendar)) {
             return false;
         }
