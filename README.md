@@ -194,12 +194,32 @@ and
 for more details.
 
 
+Test Helpers
+------------
+
+- [`Diagnosably`](./src/main/java/org/ayeseeem/test/hamcrest/Diagnosably.java) -
+  a [Hamcrest](https://hamcrest.org/) matcher to make it easier to diagnose why
+  `Calendar`s don't match.
+  `Calendar`'s unfortunate `toString()` results in exhaustive but
+  hard-to-diagnose error messages.
+- (Coming Soon/TODO) `isInstantOf` or `hasInstantOf`: similar to `Diagnosably`,
+  but designed to detect when two items are/represent the same `Instant`,
+  even if they are different objects - different `Calendar`s, for example.
+- See also
+  [`spectime`](https://github.com/ayeseeem/spectime),
+  for expressively creating times and dates, particularly for testing.
+  Specifically designed for before Java 8 - that is, before
+  [`java.time`](https://docs.oracle.com/javase/8/docs/api/java/time/package-summary.html)
+  was introduced - that's [`Instant`](https://docs.oracle.com/javase/8/docs/api/java/time/Instant.html)
+  and so on.
+
+
 TODOs
 -----
 
 - [ ] Extend methods: allow `listOf(aCollection, andItem1, andItem2)`
   and similar for `setOf()`.
-- [ ] Helpers
+- [ ] `isInstantOf` or `hasInstantOf` as described above under Test Helpers.
   - Is there a way to write a helper that has no JUnit dependency, so our
     code is dependency free?
     Is it worth it - we use JUnit for our tests anyway, so live with it?
