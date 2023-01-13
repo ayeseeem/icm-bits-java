@@ -33,23 +33,21 @@ public class Diagnosably extends BaseMatcher<Calendar> {
 
     @Override
     public void describeTo(Description description) {
-        if (expectedCalendar == null) {
-            description.appendValue(null);
-        } else {
-            Instant expectedInstant = expectedCalendar.toInstant();
-            description.appendText("a Calendar of ")
-                    .appendValue(expectedInstant);
-        }
+        describeCalendar(expectedCalendar, description);
     }
 
     @Override
     public void describeMismatch(Object item, Description description) {
         description.appendText("was ");
-        if (item == null) {
+        describeCalendar((Calendar) item, description);
+    }
+
+    private static void describeCalendar(Calendar calendar, Description description) {
+        if (calendar == null) {
             description.appendValue(null);
         } else {
             description.appendText("a Calendar of ");
-            description.appendValue(((Calendar) item).toInstant());
+            description.appendValue(calendar.toInstant());
         }
     }
 
@@ -61,13 +59,11 @@ public class Diagnosably extends BaseMatcher<Calendar> {
         if (item == null) {
             return false;
         }
-
         if (!(item instanceof Calendar)) {
             return false;
         }
 
         Instant instant = ((Calendar) item).toInstant();
-
         if (expectedCalendar != null) {
             Instant expectedInstant = expectedCalendar.toInstant();
             Matcher<? super Instant> instantMatcher = equalTo(expectedInstant);
