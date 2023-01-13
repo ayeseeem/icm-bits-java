@@ -76,11 +76,7 @@ public class Diagnosably extends BaseMatcher<Calendar> {
         Instant instant = ((Calendar) item).toInstant();
         Instant expectedInstant = expectedCalendar.toInstant();
         Matcher<? super Instant> instantMatcher = equalTo(expectedInstant);
-        if (instantMatcher.matches(instant)) {
-            return true;
-        }
-
-        return false;
+        return instantMatcher.matches(instant);
     }
 
 }
