@@ -63,6 +63,9 @@ public class Diagnosably extends BaseMatcher<Calendar> {
         if (item == null && expectedCalendar == null) {
             return true;
         }
+        if (expectedCalendar == null) {
+            return false;
+        }
         if (item == null) {
             return false;
         }
@@ -71,13 +74,12 @@ public class Diagnosably extends BaseMatcher<Calendar> {
         }
 
         Instant instant = ((Calendar) item).toInstant();
-        if (expectedCalendar != null) {
-            Instant expectedInstant = expectedCalendar.toInstant();
-            Matcher<? super Instant> instantMatcher = equalTo(expectedInstant);
-            if (instantMatcher.matches(instant)) {
-                return true;
-            }
+        Instant expectedInstant = expectedCalendar.toInstant();
+        Matcher<? super Instant> instantMatcher = equalTo(expectedInstant);
+        if (instantMatcher.matches(instant)) {
+            return true;
         }
+
         return false;
     }
 
