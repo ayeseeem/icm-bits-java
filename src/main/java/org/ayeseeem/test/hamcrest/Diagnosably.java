@@ -39,15 +39,22 @@ public class Diagnosably extends BaseMatcher<Calendar> {
     @Override
     public void describeMismatch(Object item, Description description) {
         description.appendText("was ");
-        describeCalendar((Calendar) item, description);
+        describeCalendar(item, description);
     }
 
-    private static void describeCalendar(Calendar calendar, Description description) {
+    private static void describeCalendar(Object calendar, Description description) {
         if (calendar == null) {
             description.appendValue(null);
-        } else {
+            return;
+        }
+
+        if (calendar instanceof Calendar) {
             description.appendText("a Calendar of ");
-            description.appendValue(calendar.toInstant());
+            description.appendValue(((Calendar) calendar).toInstant());
+        } else {
+            description.appendText("not a Calendar (");
+            description.appendValue(calendar);
+            description.appendText(")");
         }
     }
 

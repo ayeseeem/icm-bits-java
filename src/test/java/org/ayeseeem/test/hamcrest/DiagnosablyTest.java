@@ -15,6 +15,9 @@ import java.util.Calendar;
 import java.util.Date;
 
 import org.ayeseeem.test.Characterization;
+import org.hamcrest.Description;
+import org.hamcrest.Matcher;
+import org.hamcrest.StringDescription;
 import org.junit.Test;
 
 public class DiagnosablyTest {
@@ -106,6 +109,16 @@ public class DiagnosablyTest {
         });
         assertThat(er.getMessage(), containsString("Expected: is a Calendar of <2020-01-01T00:00:00.001Z>"));
         assertThat(er.getMessage(), containsString("but: was null"));
+    }
+
+    @Test
+    public void testWhenTheActual_IsWrongClass_EvenThoughUsuallyEnforcedBy_UsageInAssertThat() {
+        Matcher<Calendar> matcher = diagnosably(localCalendar("2020-01-01T00:00:00.001"));
+        assertThat(matcher.matches("Wrong Class"), is(false));
+
+        Description description = new StringDescription();
+        matcher.describeMismatch("Wrong Class", description);
+        assertThat(description.toString(), containsString("was not a Calendar (\"Wrong Class\")"));
     }
 
     @Characterization
