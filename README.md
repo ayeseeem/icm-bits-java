@@ -6,6 +6,8 @@
 Expressive Java utilities from [ayeseeem.org](https://www.ayeseeem.org/).
 Designed to make code clearer.
 
+For help with dates and times, see [`spectime`](https://github.com/ayeseeem/spectime).
+
 
 Expressive `Collection` factory methods
 ------------------------------------------
@@ -195,16 +197,7 @@ for more details.
 TODOs
 -----
 
-- [ ] JUnit rules to help confirm time-related code, for example:
-  - Use a random time zone every test.
-    - Random is handy for developer tests, but...
-    - Not great for Continuous Delivery or repeatable builds: not *great*
-      to have randomly failing tests, especially if not possible to then
-      diagnose: need a complete error message? That (easily) allows a re-run.
-  - Run test with a range of time zones/offsets/DSTs, to be sure code does not
-    rely upon current time zone.
-  - For ideas, see
-    [this Stackoverflow question](https://stackoverflow.com/questions/10846704/how-do-i-write-unit-tests-to-make-sure-my-date-time-based-code-works-for-all-tim).
+- [ ] Helpers
   - Is there a way to write a helper that has no JUnit dependency, so our
     code is dependency free?
     Is it worth it - we use JUnit for our tests anyway, so live with it?
