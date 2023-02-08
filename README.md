@@ -201,6 +201,34 @@ TODOs
   - Is there a way to write a helper that has no JUnit dependency, so our
     code is dependency free?
     Is it worth it - we use JUnit for our tests anyway, so live with it?
+- [ ] "Test Invariant": repeat an action until some invariant is true - for
+  example, year is the same before and after - and then use the result in
+  a test?
+  - Something like `do(...).until(...).isConstant().then(...)` or
+    `do(...).until(...).then(...)`. Something like this:
+
+  ```console
+  do(
+    before = now();
+    result = getThing();
+    after = now();
+  ).until(
+    before.year == after.year;
+  ).then(
+    assertThat(result.year, is(after.year));
+  );
+  ```
+
+  ```console
+  do(
+    result1 = getTime();
+    result2 = getTime();
+  ).until(
+    now().year
+  ).isConstant().then(
+    assertThat(result1.year, is(result2.year));
+  );
+  ```
 
 
 Coding Standard
