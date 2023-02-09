@@ -6,6 +6,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import java.util.Arrays;
 import java.util.Collection;
 
+import org.ayeseeem.test.Characterization;
 import org.junit.Test;
 
 public class ContainedItemTest {
@@ -19,6 +20,31 @@ public class ContainedItemTest {
         assertThat(ContainedItem.the("ccc").isIn(collection), is(true));
 
         assertThat(ContainedItem.the("zzz").isIn(collection), is(false));
+    }
+
+    @Characterization
+    @Test
+    public void testIsIn_Collection_OfSubType_RequiresTypeSpec_ForExample_Cast() {
+        Collection<Number> collection = Arrays.asList(1111, 22.2, 3.33);
+
+        assertThat(ContainedItem.the((Number) 1111).isIn(collection), is(true));
+        assertThat(ContainedItem.the((Number) 22.2).isIn(collection), is(true));
+        assertThat(ContainedItem.the((Number) 3.33).isIn(collection), is(true));
+
+        assertThat(ContainedItem.the((Number) 8888).isIn(collection), is(false));
+    }
+
+    @Characterization
+    @Test
+    public void testIsIn_Collection_OfSubType_RequiresTypeSpec_ForExample_Type() {
+        Collection<Number> collection = Arrays.asList(1111, 22.2, 3.33);
+        collection.contains(122);
+
+        assertThat(ContainedItem.<Number>the(1111).isIn(collection), is(true));
+        assertThat(ContainedItem.<Number>the(22.2).isIn(collection), is(true));
+        assertThat(ContainedItem.<Number>the(3.33).isIn(collection), is(true));
+
+        assertThat(ContainedItem.<Number>the(8888).isIn(collection), is(false));
     }
 
     @Test
@@ -59,6 +85,16 @@ public class ContainedItemTest {
         assertThat(ContainedItem.the(333).isOneOf(111, 222, 333), is(true));
 
         assertThat(ContainedItem.the(888).isOneOf(111, 222, 333), is(false));
+    }
+
+    @Characterization
+    @Test
+    public void testIsOneOf_ofSubTypes_RequiresTypeSpec_forExample_Cast() {
+        assertThat(ContainedItem.the((Number) 1111).isOneOf(1111, 22.2, 3.33), is(true));
+        assertThat(ContainedItem.the((Number) 22.2).isOneOf(1111, 22.2, 3.33), is(true));
+        assertThat(ContainedItem.the((Number) 3.33).isOneOf(1111, 22.2, 3.33), is(true));
+
+        assertThat(ContainedItem.the((Number) 8888).isOneOf(1111, 22.2, 3.33), is(false));
     }
 
     @Test
