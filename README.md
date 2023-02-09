@@ -1,7 +1,7 @@
 `icm-bits-java`
 ===============
 
-[![Build Status](https://travis-ci.com/ayeseeem/icm-bits-java.svg?branch=master)](https://travis-ci.com/github/ayeseeem/icm-bits-java)
+[![Build Status](https://github.com/ayeseeem/icm-bits-java/actions/workflows/maven.yml/badge.svg)](https://github.com/ayeseeem/icm-bits-java/actions/workflows/maven.yml)
 
 Expressive Java utilities from [ayeseeem.org](https://www.ayeseeem.org/).
 Designed to make code clearer.
