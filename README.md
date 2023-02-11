@@ -197,6 +197,8 @@ for more details.
 TODOs
 -----
 
+- [ ] Extend methods: allow `listOf(aCollection, andItem1, andItem2)`
+  and similar for `setOf()`.
 - [ ] Helpers
   - Is there a way to write a helper that has no JUnit dependency, so our
     code is dependency free?
