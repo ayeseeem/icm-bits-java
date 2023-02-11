@@ -22,8 +22,8 @@ List<Month> latinNumberedPeriod = listOf(SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER)
 Set<Month> latinNumberedMonths = setOf(SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER);
 ```
 
-Use `listOf` instead of `Arrays.asList`. There was no equivalent for
-`setOf`.
+Use `listOf()` instead of `Arrays.asList()`. There was no equivalent for
+`setOf()`.
 
 If you want to emphasize the nature of the collection, you can use
 `unmodifiableListOf()` and `unmodifiableSetOf()`.
@@ -38,7 +38,7 @@ If modifiability is significant, use `initiallyEmptyList()` or
 There are set equivalents: `emptySet()`, `initiallyEmptySet()`, and
 `alwaysEmptySet()`.
 
-Now with Java 9+ you can now use `List.of` and `Set.of`, so perhaps some of these
+Now with Java 9+ you can now use `List.of()` and `Set.of()`, so perhaps some of these
 are no longer needed. But note that the details of mutability and modifiability
 might be different.
 
