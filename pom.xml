@@ -226,15 +226,25 @@
             </format>
             <format>
               <includes>
-                <include>**/*.md</include>
                 <include>src/**/*.java</include>
-                <include>src/**/*.txt</include>
               </includes>
               <trimTrailingWhitespace/>
               <endWithNewline/>
               <indent>
                 <spaces>true</spaces>
                 <spacesPerTab>4</spacesPerTab>
+              </indent>
+            </format>
+            <format>
+              <includes>
+                <include>**/*.md</include>
+                <include>src/**/*.txt</include>
+              </includes>
+              <trimTrailingWhitespace/>
+              <endWithNewline/>
+              <indent>
+                <spaces>true</spaces>
+                <spacesPerTab>2</spacesPerTab>
               </indent>
             </format>
           </formats>
