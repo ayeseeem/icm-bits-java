@@ -215,6 +215,7 @@
             <format>
               <includes>
                 <include>**/pom.xml</include>
+                <include>*.xml</include>
                 <include>src/**/*.xml</include>
               </includes>
               <trimTrailingWhitespace/>
@@ -237,7 +238,9 @@
             </format>
             <format>
               <includes>
-                <include>**/*.md</include>
+                <include>*.md</include>
+                <include>src/**/*.md</include>
+                <include>*.txt</include>
                 <include>src/**/*.txt</include>
               </includes>
               <trimTrailingWhitespace/>
