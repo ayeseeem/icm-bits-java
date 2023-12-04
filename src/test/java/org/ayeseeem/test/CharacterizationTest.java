@@ -53,7 +53,7 @@ public class CharacterizationTest {
         assertThat(annotation, is(nullValue()));
     }
 
-    @Characterization("Cannot test value/reason - not currently retained at runtim")
+    @Characterization("Cannot test value/reason - not currently retained at runtime")
     @Test
     public void exampleCharacterization_Usage() {
 
