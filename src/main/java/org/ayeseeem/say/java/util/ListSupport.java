@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Helpers and extensions for {@link java.util.List}.
@@ -131,6 +132,40 @@ public class ListSupport {
      */
     public static <T> List<T> alwaysEmptyList() {
         return unmodifiableListOf();
+    }
+
+    /**
+     * Finds the first item in a list.
+     *
+     * @param <T>
+     *            element type
+     * @param list
+     *            the list to get the data from
+     * @return an {@code Optional} containing the first element in the list, or an
+     *         empty {@code Optional} if the list is empty.
+     */
+    public static <T> Optional<T> firstOf(List<T> list) {
+        if (list.isEmpty()) {
+            return Optional.empty();
+        }
+        return Optional.of(list.get(0));
+    }
+
+    /**
+     * Finds the last item in a list.
+     *
+     * @param <T>
+     *            element type
+     * @param list
+     *            the list to get the data from
+     * @return an {@code Optional} containing the last element in the list, or an
+     *         empty {@code Optional} if the list is empty.
+     */
+    public static <T> Optional<T> lastOf(List<T> list) {
+        if (list.isEmpty()) {
+            return Optional.empty();
+        }
+        return Optional.of(list.get(list.size() - 1));
     }
 
 }

@@ -3,7 +3,9 @@ package org.ayeseeem.say.java.util;
 import static org.ayeseeem.say.java.util.DummyValue.dummy;
 import static org.ayeseeem.say.java.util.ListSupport.alwaysEmptyList;
 import static org.ayeseeem.say.java.util.ListSupport.emptyList;
+import static org.ayeseeem.say.java.util.ListSupport.firstOf;
 import static org.ayeseeem.say.java.util.ListSupport.initiallyEmptyList;
+import static org.ayeseeem.say.java.util.ListSupport.lastOf;
 import static org.ayeseeem.say.java.util.ListSupport.listOf;
 import static org.ayeseeem.say.java.util.ListSupport.modifiableListOf;
 import static org.ayeseeem.say.java.util.ListSupport.unmodifiableListOf;
@@ -22,6 +24,20 @@ import org.ayeseeem.test.Characterization;
 import org.junit.Test;
 
 public class ListSupportTest {
+
+    @Test
+    public void testFirstOf() {
+        assertThat(firstOf(emptyList()).isPresent(), is(false));
+        assertThat(firstOf(listOf("x")).get(), is("x"));
+        assertThat(firstOf(listOf("b", "d", "a", "c")).get(), is("b"));
+    }
+
+    @Test
+    public void testLastOf() {
+        assertThat(lastOf(emptyList()).isPresent(), is(false));
+        assertThat(lastOf(listOf("x")).get(), is("x"));
+        assertThat(lastOf(listOf("b", "d", "a", "c")).get(), is("c"));
+    }
 
     @Test
     public void testListOf() {

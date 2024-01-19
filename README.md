@@ -75,6 +75,16 @@ for more details.
 )
 
 
+`Collection` Helpers
+--------------------
+
+Use `firstOf(list)` and `lastOf(list)` to get the first and last item of a list,
+wrapped as an `Optional`, by analogy with Java Stream's `findFirst()`.
+See
+[`ListSupport.java`](src/main/java/org/ayeseeem/say/java/util/ListSupport.java)
+for more details.
+
+
 `ContainedItem` for better `if`s
 --------------------------------
 
