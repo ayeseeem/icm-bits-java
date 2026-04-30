@@ -74,6 +74,17 @@ public class ListSupportTest {
         assertThat(listOf("a", dummy(1)), contains("a", dummy(1)));
     }
 
+    @Test
+    public void testListOf_AllowsDuplicates() {
+        assertThat(listOf("a", "b", "b", "z"), contains("a", "b", "b", "z"));
+    }
+
+    @Test
+    public void testListOf_AllowsDuplicates_ArbitraryType() {
+        assertThat(listOf(dummy(1), dummy(2), dummy(2), dummy(10)),
+                containsInAnyOrder(dummy(1), dummy(2), dummy(2), dummy(10)));
+    }
+
     @Test(expected = UnsupportedOperationException.class)
     public void testListOf_CreatesStructurallyUnmodifiableList_CannotRemoveElement() {
         List<String> list = listOf("a", "b", "c");
@@ -180,6 +191,17 @@ public class ListSupportTest {
     }
 
     @Test
+    public void testModifiableListOf_AllowsDuplicates() {
+        assertThat(modifiableListOf("a", "b", "b", "z"), contains("a", "b", "b", "z"));
+    }
+
+    @Test
+    public void testModifiableListOf_AllowsDuplicates_ArbitraryType() {
+        assertThat(modifiableListOf(dummy(1), dummy(2), dummy(2), dummy(10)),
+                containsInAnyOrder(dummy(1), dummy(2), dummy(2), dummy(10)));
+    }
+
+    @Test
     public void testModifiableListOf_CreatesStructurallyModifiableList() {
         List<String> list = modifiableListOf("a", "b", "c");
         list.remove("b");
@@ -265,6 +287,17 @@ public class ListSupportTest {
     @Test
     public void testUnmodifiableListOf_AllowsMixedTypes() {
         assertThat(unmodifiableListOf("a", dummy(1)), contains("a", dummy(1)));
+    }
+
+    @Test
+    public void testUnmodifiableListOf_AllowsDuplicates() {
+        assertThat(unmodifiableListOf("a", "b", "b", "z"), contains("a", "b", "b", "z"));
+    }
+
+    @Test
+    public void testUnmodifiableListOf_AllowsDuplicates_ArbitraryType() {
+        assertThat(unmodifiableListOf(dummy(1), dummy(2), dummy(2), dummy(10)),
+                containsInAnyOrder(dummy(1), dummy(2), dummy(2), dummy(10)));
     }
 
     @Test(expected = UnsupportedOperationException.class)

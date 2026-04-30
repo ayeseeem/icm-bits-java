@@ -33,6 +33,19 @@ public class SetSupportTest {
     }
 
     @Test
+    public void testSetOf_CanBeEmpty() {
+        assertThat(setOf(), is(empty()));
+    }
+
+    @Characterization
+    @Test
+    public void testSetOf_TakesAnArrayAsAnArgument() {
+        String[] anArray = { "a", "b", "c" };
+
+        assertThat(setOf(anArray), containsInAnyOrder("a", "b", "c"));
+    }
+
+    @Test
     public void testSetOf_ArbitraryType() {
         assertThat(setOf(dummy(1), dummy(2), dummy(3)),
                 containsInAnyOrder(dummy(1), dummy(2), dummy(3)));
@@ -123,6 +136,19 @@ public class SetSupportTest {
     }
 
     @Test
+    public void testModifiableSetOf_CanBeEmpty() {
+        assertThat(modifiableSetOf(), is(empty()));
+    }
+
+    @Characterization
+    @Test
+    public void testModifiableSetOf_TakesAnArrayAsAnArgument() {
+        String[] anArray = { "a", "b", "c" };
+
+        assertThat(modifiableSetOf(anArray), containsInAnyOrder("a", "b", "c"));
+    }
+
+    @Test
     public void testModifiableSetOf_ArbitraryType() {
         assertThat(modifiableSetOf(dummy(1), dummy(2), dummy(3)),
                 containsInAnyOrder(dummy(1), dummy(2), dummy(3)));
@@ -181,6 +207,19 @@ public class SetSupportTest {
     @Test
     public void testUnmodifiableSetOf() {
         assertThat(unmodifiableSetOf("a", "b", "c"), containsInAnyOrder("a", "b", "c"));
+    }
+
+    @Test
+    public void testUnmodifiableSetOf_CanBeEmpty() {
+        assertThat(unmodifiableSetOf(), is(empty()));
+    }
+
+    @Characterization
+    @Test
+    public void testUnmodifiableSetOf_TakesAnArrayAsAnArgument() {
+        String[] anArray = { "a", "b", "c" };
+
+        assertThat(unmodifiableSetOf(anArray), containsInAnyOrder("a", "b", "c"));
     }
 
     @Test
