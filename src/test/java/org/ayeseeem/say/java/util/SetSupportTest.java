@@ -288,7 +288,7 @@ public class SetSupportTest {
     }
 
     @Test
-    public void testInsertionOrderedSet_DifferentTypes() {
+    public void testInsertionOrderedSet_ItemsAreInInsertionOrder_DifferentTypes() {
         Set<String> result = insertionOrderedSet();
         result.add("9");
         result.add("1");

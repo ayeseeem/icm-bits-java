@@ -31,7 +31,7 @@ public class MapSupportTest {
     }
 
     @Test
-    public void testKeySortedMap_DifferentTypes() {
+    public void testKeySortedMap_KeysAreSorted_DifferentTypes() {
         Map<String, Integer> result = keySortedMap();
         result.put("9", 12345);
         result.put("1", 12345);
@@ -118,7 +118,7 @@ public class MapSupportTest {
     }
 
     @Test
-    public void testInsertionOrderedMap_DifferentTypes() {
+    public void testInsertionOrderedMap_KeysAreInInsertionOrder_DifferentTypes() {
         Map<String, Integer> result = insertionOrderedMap();
         result.put("9", 12345);
         result.put("1", 12345);
