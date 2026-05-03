@@ -25,7 +25,7 @@ public class ListSupport {
      * @param <T>
      *            member type
      * @param members
-     *            the members of the list
+     *            the members of the list, can be empty
      * @return a new, unmodifiable {@code List}
      *
      * @see #unmodifiableListOf(Object...)
@@ -65,7 +65,7 @@ public class ListSupport {
      * @param <T>
      *            member type
      * @param members
-     *            the members of the list
+     *            the members of the list, can be empty
      * @return a new, modifiable {@code List}
      *
      * @see #unmodifiableListOf(Object...)
@@ -107,7 +107,7 @@ public class ListSupport {
      * @param <T>
      *            member type
      * @param members
-     *            the members of the list
+     *            the members of the list, can be empty
      * @return a new, unmodifiable {@code List}
      *
      * @see #modifiableListOf(Object...)

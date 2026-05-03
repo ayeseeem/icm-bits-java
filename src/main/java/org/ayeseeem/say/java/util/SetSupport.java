@@ -23,7 +23,7 @@ public class SetSupport {
      * @param <T>
      *            member type
      * @param members
-     *            the members of the set
+     *            the members of the set, can be empty
      * @return a new, unmodifiable {@code Set}
      *
      * @see #unmodifiableSetOf(Object...)
@@ -63,7 +63,7 @@ public class SetSupport {
      * @param <T>
      *            member type
      * @param members
-     *            the members of the set
+     *            the members of the set, can be empty
      * @return a new, modifiable {@code Set}
      *
      * @see #unmodifiableSetOf(Object...)
@@ -108,7 +108,7 @@ public class SetSupport {
      * @param <T>
      *            member type
      * @param members
-     *            the members of the set
+     *            the members of the set, can be empty
      * @return a new, unmodifiable {@code Set}
      *
      * @see #modifiableSetOf(Object...)
