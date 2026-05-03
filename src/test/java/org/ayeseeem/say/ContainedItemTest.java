@@ -79,6 +79,12 @@ public class ContainedItemTest {
     }
 
     @Test
+    public void testIsOneOf_CanBeEmpty() {
+        assertThat(ContainedItem.the("abc").isOneOf(), is(false));
+        assertThat(ContainedItem.the("xyz").isOneOf(), is(false));
+    }
+
+    @Test
     public void testIsOneOf_HandlesPrimitives() {
         assertThat(ContainedItem.the(111).isOneOf(111, 222, 333), is(true));
         assertThat(ContainedItem.the(222).isOneOf(111, 222, 333), is(true));

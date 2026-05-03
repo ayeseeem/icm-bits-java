@@ -67,7 +67,7 @@ public class ContainedItem<T> {
      * Checks whether the item is contained in some items.
      *
      * @param items
-     *            the items to check
+     *            the items to check, can be empty
      * @return true if this item is one of the items
      */
     @SafeVarargs
