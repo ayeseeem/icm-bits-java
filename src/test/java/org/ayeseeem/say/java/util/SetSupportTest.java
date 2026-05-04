@@ -340,6 +340,23 @@ public class SetSupportTest {
         assertThat(result, contains(9, 1, 5));
     }
 
+    @Characterization
+    @Test
+    public void testInsertionOrderedSetOf_ItemsAreInInitialInsertionOrder() {
+        Set<Integer> result = insertionOrderedSetOf();
+        result.add(9);
+        result.add(1);
+        result.add(5);
+
+        // Add only adds if item not present, so these should have no effect:
+        result.add(5);
+        result.add(1);
+        result.add(9);
+
+        assertThat(result, containsInAnyOrder(9, 1, 5));
+        assertThat(result, contains(9, 1, 5));
+    }
+
     @Test
     public void testInsertionOrderedSetOf_ItemsAreInInsertionOrder_DifferentTypes() {
         Set<String> result = insertionOrderedSetOf();
