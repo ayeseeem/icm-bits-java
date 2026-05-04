@@ -147,10 +147,17 @@ public class SetSupport {
      *
      * @param <T>
      *            member type
+     * @param members
+     *            the members of the set, can be empty. These members are inserted
+     *            in the order they are listed, and before any subsequent entries
+     *            added using {@link Set#add(Object)}.
      * @return a new, modifiable {@code Set}
      */
-    public static <T> Set<T> insertionOrderedSet() {
-        return new LinkedHashSet<>();
+    @SafeVarargs
+    public static <T> Set<T> insertionOrderedSet(T... members) {
+        LinkedHashSet<T> set = new LinkedHashSet<>();
+        set.addAll(Arrays.asList(members));
+        return set;
     }
 
 }

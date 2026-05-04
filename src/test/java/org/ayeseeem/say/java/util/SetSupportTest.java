@@ -278,6 +278,59 @@ public class SetSupportTest {
     }
 
     @Test
+    public void testInsertionOrderedSet() {
+        Set<Integer> result = insertionOrderedSet(9, 1, 5);
+        result.add(8);
+        result.add(2);
+        result.add(4);
+
+        assertThat(result, containsInAnyOrder(9, 1, 5, 8, 2, 4));
+    }
+
+    @Test
+    public void testInsertionOrderedSet_ItemsAreInConstructionThenInsertionOrder() {
+        Set<Integer> result = insertionOrderedSet(9, 1, 5);
+        result.add(8);
+        result.add(2);
+        result.add(4);
+
+        assertThat(result, contains(9, 1, 5, 8, 2, 4));
+    }
+
+    @Test
+    public void testInsertionOrderedSet_ItemsIterateInOrder() {
+        Set<Integer> result = insertionOrderedSet(9, 1, 5);
+        result.add(8);
+        result.add(2);
+        result.add(4);
+
+        Iterator<Integer> iterator = result.iterator();
+        assertThat(iterator.next(), is(9));
+        assertThat(iterator.next(), is(1));
+        assertThat(iterator.next(), is(5));
+        assertThat(iterator.next(), is(8));
+        assertThat(iterator.next(), is(2));
+        assertThat(iterator.next(), is(4));
+    }
+
+    @Test
+    public void testInsertionOrderedSet_ItemsAreInConstructionOrder() {
+        Set<Integer> result = insertionOrderedSet(9, 1, 5);
+
+        assertThat(result, contains(9, 1, 5));
+    }
+
+    @Test
+    public void testInsertionOrderedSet_ItemsIterateInConstructionOrder() {
+        Set<Integer> result = insertionOrderedSet(9, 1, 5);
+
+        Iterator<Integer> iterator = result.iterator();
+        assertThat(iterator.next(), is(9));
+        assertThat(iterator.next(), is(1));
+        assertThat(iterator.next(), is(5));
+    }
+
+    @Test
     public void testInsertionOrderedSet_ItemsAreInInsertionOrder() {
         Set<Integer> result = insertionOrderedSet();
         result.add(9);
@@ -315,6 +368,25 @@ public class SetSupportTest {
         Set<Integer> result = insertionOrderedSet();
 
         assertThat(result.isEmpty(), is(true));
+    }
+
+    @Characterization
+    @Test
+    public void testInsertionOrderedSet_TakesAnArrayAsAnArgument() {
+        String[] anArray = { "a", "b", "c" };
+
+        assertThat(insertionOrderedSet(anArray), containsInAnyOrder("a", "b", "c"));
+    }
+
+    @Test
+    public void testInsertionOrderedSet_ArbitraryType() {
+        assertThat(insertionOrderedSet(dummy(1), dummy(2), dummy(3)),
+                containsInAnyOrder(dummy(1), dummy(2), dummy(3)));
+    }
+
+    @Test
+    public void testInsertionOrderedSet_AllowsMixedTypes() {
+        assertThat(insertionOrderedSet("a", dummy(1)), containsInAnyOrder("a", dummy(1)));
     }
 
     @Test
