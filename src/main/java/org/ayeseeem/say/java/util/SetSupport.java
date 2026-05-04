@@ -154,7 +154,7 @@ public class SetSupport {
      * @return a new, modifiable {@code Set}
      */
     @SafeVarargs
-    public static <T> Set<T> insertionOrderedSet(T... members) {
+    public static <T> Set<T> insertionOrderedSetOf(T... members) {
         LinkedHashSet<T> set = new LinkedHashSet<>();
         set.addAll(Arrays.asList(members));
         return set;

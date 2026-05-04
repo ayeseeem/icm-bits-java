@@ -5,7 +5,7 @@ import static org.ayeseeem.say.java.util.ListSupport.listOf;
 import static org.ayeseeem.say.java.util.SetSupport.alwaysEmptySet;
 import static org.ayeseeem.say.java.util.SetSupport.emptySet;
 import static org.ayeseeem.say.java.util.SetSupport.initiallyEmptySet;
-import static org.ayeseeem.say.java.util.SetSupport.insertionOrderedSet;
+import static org.ayeseeem.say.java.util.SetSupport.insertionOrderedSetOf;
 import static org.ayeseeem.say.java.util.SetSupport.modifiableSetOf;
 import static org.ayeseeem.say.java.util.SetSupport.setOf;
 import static org.ayeseeem.say.java.util.SetSupport.unmodifiableSetOf;
@@ -278,8 +278,8 @@ public class SetSupportTest {
     }
 
     @Test
-    public void testInsertionOrderedSet() {
-        Set<Integer> result = insertionOrderedSet(9, 1, 5);
+    public void testInsertionOrderedSetOf() {
+        Set<Integer> result = insertionOrderedSetOf(9, 1, 5);
         result.add(8);
         result.add(2);
         result.add(4);
@@ -288,8 +288,8 @@ public class SetSupportTest {
     }
 
     @Test
-    public void testInsertionOrderedSet_ItemsAreInConstructionThenInsertionOrder() {
-        Set<Integer> result = insertionOrderedSet(9, 1, 5);
+    public void testInsertionOrderedSetOf_ItemsAreInConstructionThenInsertionOrder() {
+        Set<Integer> result = insertionOrderedSetOf(9, 1, 5);
         result.add(8);
         result.add(2);
         result.add(4);
@@ -298,8 +298,8 @@ public class SetSupportTest {
     }
 
     @Test
-    public void testInsertionOrderedSet_ItemsIterateInOrder() {
-        Set<Integer> result = insertionOrderedSet(9, 1, 5);
+    public void testInsertionOrderedSetOf_ItemsIterateInOrder() {
+        Set<Integer> result = insertionOrderedSetOf(9, 1, 5);
         result.add(8);
         result.add(2);
         result.add(4);
@@ -314,15 +314,15 @@ public class SetSupportTest {
     }
 
     @Test
-    public void testInsertionOrderedSet_ItemsAreInConstructionOrder() {
-        Set<Integer> result = insertionOrderedSet(9, 1, 5);
+    public void testInsertionOrderedSetOf_ItemsAreInConstructionOrder() {
+        Set<Integer> result = insertionOrderedSetOf(9, 1, 5);
 
         assertThat(result, contains(9, 1, 5));
     }
 
     @Test
-    public void testInsertionOrderedSet_ItemsIterateInConstructionOrder() {
-        Set<Integer> result = insertionOrderedSet(9, 1, 5);
+    public void testInsertionOrderedSetOf_ItemsIterateInConstructionOrder() {
+        Set<Integer> result = insertionOrderedSetOf(9, 1, 5);
 
         Iterator<Integer> iterator = result.iterator();
         assertThat(iterator.next(), is(9));
@@ -331,8 +331,8 @@ public class SetSupportTest {
     }
 
     @Test
-    public void testInsertionOrderedSet_ItemsAreInInsertionOrder() {
-        Set<Integer> result = insertionOrderedSet();
+    public void testInsertionOrderedSetOf_ItemsAreInInsertionOrder() {
+        Set<Integer> result = insertionOrderedSetOf();
         result.add(9);
         result.add(1);
         result.add(5);
@@ -341,8 +341,8 @@ public class SetSupportTest {
     }
 
     @Test
-    public void testInsertionOrderedSet_ItemsAreInInsertionOrder_DifferentTypes() {
-        Set<String> result = insertionOrderedSet();
+    public void testInsertionOrderedSetOf_ItemsAreInInsertionOrder_DifferentTypes() {
+        Set<String> result = insertionOrderedSetOf();
         result.add("9");
         result.add("1");
         result.add("5");
@@ -351,8 +351,8 @@ public class SetSupportTest {
     }
 
     @Test
-    public void testInsertionOrderedSet_ItemsIterateInInsertionOrder() {
-        Set<Integer> result = insertionOrderedSet();
+    public void testInsertionOrderedSetOf_ItemsIterateInInsertionOrder() {
+        Set<Integer> result = insertionOrderedSetOf();
         result.add(9);
         result.add(1);
         result.add(5);
@@ -364,34 +364,34 @@ public class SetSupportTest {
     }
 
     @Test
-    public void testInsertionOrderedSet_CanBeEmpty() {
-        Set<Integer> result = insertionOrderedSet();
+    public void testInsertionOrderedSetOf_CanBeEmpty() {
+        Set<Integer> result = insertionOrderedSetOf();
 
         assertThat(result.isEmpty(), is(true));
     }
 
     @Characterization
     @Test
-    public void testInsertionOrderedSet_TakesAnArrayAsAnArgument() {
+    public void testInsertionOrderedSetOf_TakesAnArrayAsAnArgument() {
         String[] anArray = { "a", "b", "c" };
 
-        assertThat(insertionOrderedSet(anArray), containsInAnyOrder("a", "b", "c"));
+        assertThat(insertionOrderedSetOf(anArray), containsInAnyOrder("a", "b", "c"));
     }
 
     @Test
-    public void testInsertionOrderedSet_ArbitraryType() {
-        assertThat(insertionOrderedSet(dummy(1), dummy(2), dummy(3)),
+    public void testInsertionOrderedSetOf_ArbitraryType() {
+        assertThat(insertionOrderedSetOf(dummy(1), dummy(2), dummy(3)),
                 containsInAnyOrder(dummy(1), dummy(2), dummy(3)));
     }
 
     @Test
-    public void testInsertionOrderedSet_AllowsMixedTypes() {
-        assertThat(insertionOrderedSet("a", dummy(1)), containsInAnyOrder("a", dummy(1)));
+    public void testInsertionOrderedSetOf_AllowsMixedTypes() {
+        assertThat(insertionOrderedSetOf("a", dummy(1)), containsInAnyOrder("a", dummy(1)));
     }
 
     @Test
-    public void testInsertionOrderedSet_ImplementationDetails() {
-        Set<Integer> result = insertionOrderedSet();
+    public void testInsertionOrderedSetOf_ImplementationDetails() {
+        Set<Integer> result = insertionOrderedSetOf();
 
         assertThat(result, is(instanceOf(HashSet.class)));
         assertThat(result, is(instanceOf(LinkedHashSet.class)));
