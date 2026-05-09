@@ -5,7 +5,7 @@
 
   <groupId>org.ayeseeem</groupId>
   <artifactId>icm-bits-java</artifactId>
-  <version>0.5.0-SNAPSHOT</version>
+  <version>0.5.0</version>
   <packaging>jar</packaging>
 
   <name>ayeseeem.org bits-java</name>
@@ -37,7 +37,7 @@
   <scm>
     <connection>scm:git:https://github.com/ayeseeem/icm-bits-java.git</connection>
     <developerConnection>scm:git:https://github.com/ayeseeem/icm-bits-java.git</developerConnection>
-    <tag>HEAD</tag>
+    <tag>icm-bits-java-0.5.0</tag>
   </scm>
   <distributionManagement>
     <repository>
@@ -151,7 +151,7 @@
                   <action>
                     <execute>
                       <runOnIncremental>true</runOnIncremental>
-                    </execute >
+                    </execute>
                   </action>
                 </pluginExecution>
               </pluginExecutions>
@@ -212,8 +212,8 @@
                 <include>*.xml</include>
                 <include>src/**/*.xml</include>
               </includes>
-              <trimTrailingWhitespace/>
-              <endWithNewline/>
+              <trimTrailingWhitespace />
+              <endWithNewline />
               <indent>
                 <spaces>true</spaces>
                 <spacesPerTab>2</spacesPerTab>
@@ -226,8 +226,8 @@
                 <include>*.txt</include>
                 <include>src/**/*.txt</include>
               </includes>
-              <trimTrailingWhitespace/>
-              <endWithNewline/>
+              <trimTrailingWhitespace />
+              <endWithNewline />
               <indent>
                 <spaces>true</spaces>
                 <spacesPerTab>2</spacesPerTab>
@@ -235,8 +235,8 @@
             </format>
           </formats>
           <java>
-            <trimTrailingWhitespace/>
-            <endWithNewline/>
+            <trimTrailingWhitespace />
+            <endWithNewline />
             <indent>
               <spaces>true</spaces>
               <spacesPerTab>4</spacesPerTab>
